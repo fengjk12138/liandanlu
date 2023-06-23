@@ -1,0 +1,30 @@
+.mermaid-wrapper {
+  overflow-x: auto;
+  padding: 0.6em 0.4em;
+  text-align: center;
+  transition: all 1s;
+
+  @media (max-width: hope-config.$mobile) {
+    margin: 0 -1.5rem;
+    padding: 0.6em 0;
+  }
+
+  // mermaid style fix
+  .node rect,
+  .clusters rect,
+  rect.note,
+  .actor {
+    rx: 8;
+    ry: 8;
+  }
+}
+
+.mermaid-loading {
+  color: var(--vp-tc);
+}
+
+.mermaid-content {
+  @media print {
+    page-break-inside: avoid;
+  }
+}

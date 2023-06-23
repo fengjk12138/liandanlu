@@ -1,0 +1,14 @@
+export const data = JSON.parse("{\"key\":\"v-76601b7e\",\"path\":\"/GPUdocs/\",\"title\":\"GPU服务器文档\",\"lang\":\"zh-CN\",\"frontmatter\":{\"index\":false,\"title\":\"GPU服务器文档\",\"icon\":\"computer\",\"description\":\"〇、 神一样的工具们 [0. 翻墙] [1. nextcloud网盘工具] 一、 GPU服务器使用文档 0. 快速入门的文档 (user/fast.md) 1. 服务器上网、翻墙、国外资源加速 (user/network.md) 加速你的pip，`git clone`等，畅游世界资源。 2. NAS使用技巧 (user/nas.md) [NAS介绍];...\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"http://liandan.cn:8080/GPUdocs/\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"炼丹炉系统\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"GPU服务器文档\"}],[\"meta\",{\"property\":\"og:description\",\"content\":\"〇、 神一样的工具们 [0. 翻墙] [1. nextcloud网盘工具] 一、 GPU服务器使用文档 0. 快速入门的文档 (user/fast.md) 1. 服务器上网、翻墙、国外资源加速 (user/network.md) 加速你的pip，`git clone`等，畅游世界资源。 2. NAS使用技巧 (user/nas.md) [NAS介绍];...\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}],[\"script\",{\"type\":\"application/ld+json\"},\"{\\\"@context\\\":\\\"https://schema.org\\\",\\\"@type\\\":\\\"Article\\\",\\\"headline\\\":\\\"GPU服务器文档\\\",\\\"image\\\":[\\\"\\\"],\\\"dateModified\\\":null,\\\"author\\\":[]}\"]]},\"headers\":[{\"level\":2,\"title\":\"〇、 神一样的工具们\",\"slug\":\"〇、-神一样的工具们\",\"link\":\"#〇、-神一样的工具们\",\"children\":[{\"level\":3,\"title\":\"[0. 翻墙]\",\"slug\":\"_0-翻墙\",\"link\":\"#_0-翻墙\",\"children\":[]},{\"level\":3,\"title\":\"[1. nextcloud网盘工具]\",\"slug\":\"_1-nextcloud网盘工具\",\"link\":\"#_1-nextcloud网盘工具\",\"children\":[]}]},{\"level\":2,\"title\":\"一、 GPU服务器使用文档\",\"slug\":\"一、-gpu服务器使用文档\",\"link\":\"#一、-gpu服务器使用文档\",\"children\":[{\"level\":3,\"title\":\"0. 快速入门的文档\",\"slug\":\"_0-快速入门的文档\",\"link\":\"#_0-快速入门的文档\",\"children\":[]},{\"level\":3,\"title\":\"1. 服务器上网、翻墙、国外资源加速\",\"slug\":\"_1-服务器上网、翻墙、国外资源加速\",\"link\":\"#_1-服务器上网、翻墙、国外资源加速\",\"children\":[]},{\"level\":3,\"title\":\"2. NAS使用技巧\",\"slug\":\"_2-nas使用技巧\",\"link\":\"#_2-nas使用技巧\",\"children\":[]},{\"level\":3,\"title\":\"3. 加速你的计算、减少程序瓶颈\",\"slug\":\"_3-加速你的计算、减少程序瓶颈\",\"link\":\"#_3-加速你的计算、减少程序瓶颈\",\"children\":[]}]},{\"level\":2,\"title\":\"二、 服务器集群搭建\",\"slug\":\"二、-服务器集群搭建\",\"link\":\"#二、-服务器集群搭建\",\"children\":[]},{\"level\":2,\"title\":\"[1. GPU服务器硬件配置]\",\"slug\":\"_1-gpu服务器硬件配置\",\"link\":\"#_1-gpu服务器硬件配置\",\"children\":[]},{\"level\":2,\"title\":\"[2. GPU服务器部署文档]\",\"slug\":\"_2-gpu服务器部署文档\",\"link\":\"#_2-gpu服务器部署文档\",\"children\":[]},{\"level\":2,\"title\":\"三、 NAS文档包含以下内容\",\"slug\":\"三、-nas文档包含以下内容\",\"link\":\"#三、-nas文档包含以下内容\",\"children\":[]}],\"readingTime\":{\"minutes\":0.57,\"words\":171},\"filePathRelative\":\"GPUdocs/README.md\",\"autoDesc\":true}")
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
+}
