@@ -17,8 +17,13 @@
 <p>整个容器中的系统只属于使用者本人，可以任意重启、任意配置环境、任意修改，不用担心影响他人；</p>
 </li>
 <li>
-<p>容器内也有与他人公用的资源，比如GPU与NAS存储。NAS存储详见详细文档，下文主要介绍GPU分配；</p>
+<p>容器内也有与他人公用的资源，比如GPU与NAS存储。NAS存储详见<a href="https://docs.heartbreaker.icu/GPUdocs/" target="_blank" rel="noopener noreferrer">详细文档<ExternalLinkIcon/></a>，下文主要介绍GPU分配；</p>
 </li>
+</ul>
+<blockquote>
+<p><code v-pre>nas-public-linkdata</code>，<code v-pre>nas-public-tju</code>等目录为NAS目录，为方便用户使用而设立，具有极大的作用，详情了解<a href="https://docs.heartbreaker.icu/NASdocs/user" target="_blank" rel="noopener noreferrer">NAS文档<ExternalLinkIcon/></a>。</p>
+</blockquote>
+<ul>
 <li>
 <p>在容器名一般由<code v-pre>服务器名-人名</code>组成，比如<code v-pre>mars-huanghansheng</code>，在给管理员报告使用问题时，需要说清楚是哪台服务器的哪个容器出现问题，需要报告清楚<code v-pre>容器名</code>；</p>
 </li>
@@ -55,13 +60,25 @@
 可以装<strong>cudnn</strong>和<strong>nvcc</strong>，但是高版本<code v-pre>pytorch</code>已经不需要自己单独装<code v-pre>cudnnn</code>这些的，直接复制<a href="https://pytorch.org/" target="_blank" rel="noopener noreferrer">pytorch官网<ExternalLinkIcon/></a>安装命令即可。</p>
 </li>
 <li>
-<p>可以自行修改容器密码，但是<strong>禁止使用弱密码</strong>，因为容器对外网开放，会导致病毒入侵。</p>
+<p>可以自行修改容器密码，设置秘钥登录等。但是<strong>禁止使用弱密码</strong>，因为容器对外网开放，会导致病毒入侵。</p>
 </li>
 <li>
 <p>禁止使用命令<code v-pre>pkill -u root</code>，这个命令会中止root的所有进程，root用户包含很多系统进程，请使用固定的进程号杀死程序，如<code v-pre>kill -9 progress_id</code>。</p>
 </li>
+</ul>
+<h2 id="四、-使用建议" tabindex="-1"><a class="header-anchor" href="#四、-使用建议" aria-hidden="true">#</a> 四、 使用建议</h2>
+<ul>
 <li>
-<p>在备份数据进入NAS时，<code v-pre>mv</code>指令有时会报错，可以使用<code v-pre>cp</code>指令。同时删除nas文件时也请检查清楚，防止误删（其实误删也可以恢复，但比较麻烦。）</p>
+<p>请经常将数据备份进入NAS。 在备份数据进入NAS时，<code v-pre>mv</code>指令有时会报错，可以使用<code v-pre>cp</code>指令。同时删除nas文件时也请检查清楚，防止误删（其实误删也可以恢复，但比较麻烦。）</p>
+</li>
+<li>
+<p>较新型号的GPU需要使用高版本<code v-pre>pytorch</code>，注意代码兼容性问题</p>
+</li>
+<li>
+<p>20系列以后的GPU使用混合精度运算，可以获得很好的加速</p>
+</li>
+<li>
+<p>GPU空闲、CPU不够、有类似硬件错误之类的问题及时报告管理员修复。</p>
 </li>
 </ul>
 </div></template>

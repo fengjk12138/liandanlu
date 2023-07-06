@@ -1,6 +1,6 @@
 ---
 # This is the title of the article
-title: 简略的NAS使用方式（GPU服务器内）
+title: NAS使用(服务器向)
 # This is the icon of the page
 icon: page
 # This control sidebar order
@@ -32,8 +32,8 @@ copyright: No Copyright
 
 使用NAS存储技术可以增加每个人的存储空间、同步多机之间的数据、降低存储成本、降低坏盘风险。
 :::info NAS存储设计理念
-外部存储，存储设备和计算设备（GPU）分离，不在同一台机器上。NAS的空间很大（至少20T以上）。
-在GPU服务器上的提现就是一个目录而已，和平时用没有任何区别。
+存储设备和计算设备（GPU）分离，不在同一台机器上。NAS的空间很大（至少20T以上）。
+在GPU服务器上的体现就是一个目录而已，和其他目录的使用没有任何区别。
 :::
 
 

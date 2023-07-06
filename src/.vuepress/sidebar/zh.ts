@@ -14,7 +14,8 @@ export const zhSidebar = sidebar({
       icon: "info",
       prefix: "overview/",
       link: "overview/",
-      collapsible: true
+      collapsible: true,
+      children: ["README.md", "gpu.md"]
 
     },
     {
@@ -22,7 +23,23 @@ export const zhSidebar = sidebar({
       icon: "page",
       prefix: "GPUdocs/",
       link: "GPUdocs/",
-      collapsible: true
+      collapsible: true,
+      children: [
+        {
+          text:'用户文档',
+          icon: "computer",
+          prefix: 'user/',
+          children:["fast.md", "network.md", "nas.md", 'acc.md']
+        },
+        {
+          text: '管理员文档',
+          icon: 'config',
+          prefix: 'deploy',
+          collapsible: true,
+          children: ['host.md', 'newuser.md', 'container.md']
+
+        }
+      ]
 
     },
     {

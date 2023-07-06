@@ -105,7 +105,7 @@
 <p><strong>如果你有多个设备连接NAS，那么你的多的设备的数据都能同步。</strong></p>
 <h3 id="_1-3-windows-挂载私有文件" tabindex="-1"><a class="header-anchor" href="#_1-3-windows-挂载私有文件" aria-hidden="true">#</a> 1.3  Windows 挂载私有文件</h3>
 <p>私有文件只有自己的账户可见，其他人无法访问自己的私有文件夹，但是挂载比较麻烦（在Windows上比较麻烦）。 也可以不挂载，不影响使用。</p>
-<details>
+<details class="hint-container details"><summary>详情</summary>
 <p>这个方法会占用你的机器回环地址（127.0.0.1）的445端口，而且也只能连接学校这一个NAS系统。如果有其他特殊需求，参考<a href="https://blog.csdn.net/zhungcan/article/details/110912546" target="_blank" rel="noopener noreferrer">这个博客<ExternalLinkIcon/></a>，下面的方法将对你不适用。</p>
 <ul>
 <li>设置端口转发，将电脑的<code v-pre>445</code>端口访问转发到远程的<code v-pre>40000</code>端口上。
@@ -154,6 +154,7 @@ net start iphlpsvc
 密码：`线上文档隐去密码编码`
 </code></pre>
 </div>
+</details>
 <ul>
 <li>
 <p>之后在对应目录中寻找自己专属文件夹即可</p>
@@ -163,7 +164,7 @@ net start iphlpsvc
 </li>
 </ul>
 <div class="language-bash line-numbers-mode" data-ext="sh"><pre v-pre class="language-bash"><code>netsh interface portproxy delete v4tov4 <span class="token assign-left variable">listenport</span><span class="token operator">=</span><span class="token number">445</span> <span class="token assign-left variable">listenaddress</span><span class="token operator">=</span><span class="token number">127.0</span>.0.1 
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></details> 
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>:::</p>
 <h2 id="_2-linux-ubuntu为例-远程连接-todo" tabindex="-1"><a class="header-anchor" href="#_2-linux-ubuntu为例-远程连接-todo" aria-hidden="true">#</a> 2. Linux（ubuntu为例）远程连接 //ToDo</h2>
 <h2 id="_3-手机连接-todo" tabindex="-1"><a class="header-anchor" href="#_3-手机连接-todo" aria-hidden="true">#</a> 3. 手机连接 //ToDo</h2>
 <h2 id="_4-链数公司内部-todo" tabindex="-1"><a class="header-anchor" href="#_4-链数公司内部-todo" aria-hidden="true">#</a> 4. 链数公司内部 //ToDo</h2>

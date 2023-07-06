@@ -151,7 +151,7 @@ copyright: No Copyright
 
 私有文件只有自己的账户可见，其他人无法访问自己的私有文件夹，但是挂载比较麻烦（在Windows上比较麻烦）。 也可以不挂载，不影响使用。
 
-<details>
+:::details
 
 这个方法会占用你的机器回环地址（127.0.0.1）的445端口，而且也只能连接学校这一个NAS系统。如果有其他特殊需求，参考[这个博客](https://blog.csdn.net/zhungcan/article/details/110912546)，下面的方法将对你不适用。
 
@@ -202,7 +202,7 @@ net start iphlpsvc
 netsh interface portproxy delete v4tov4 listenport=445 listenaddress=127.0.0.1 
 ```
 
-</details> 
+:::
 
 ## 2. Linux（ubuntu为例）远程连接 //ToDo
 

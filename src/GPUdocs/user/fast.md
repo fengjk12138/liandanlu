@@ -1,8 +1,8 @@
 ---
 # This is the title of the article
-title: 快速开始使用服务器
+title: 快速开始
 # This is the icon of the page
-icon: page
+icon: more
 # This control sidebar order
 order: 1
 # Set author
@@ -52,7 +52,8 @@ copyright: No Copyright
 
 - 整个容器中的系统只属于使用者本人，可以任意重启、任意配置环境、任意修改，不用担心影响他人；
 
-- 容器内也有与他人公用的资源，比如GPU与NAS存储。NAS存储详见详细文档，下文主要介绍GPU分配；
+- 容器内也有与他人公用的资源，比如GPU与NAS存储。NAS存储详见[详细文档](https://docs.heartbreaker.icu/GPUdocs/)，下文主要介绍GPU分配；
+>`nas-public-linkdata`，`nas-public-tju`等目录为NAS目录，为方便用户使用而设立，具有极大的作用，详情了解[NAS文档](https://docs.heartbreaker.icu/NASdocs/user)。
 
 - 在容器名一般由`服务器名-人名`组成，比如`mars-huanghansheng`，在给管理员报告使用问题时，需要说清楚是哪台服务器的哪个容器出现问题，需要报告清楚`容器名`；
 
@@ -92,8 +93,16 @@ GPU可以细分到单人，如在`黄汉升`的容器内`nvidia-smi`，只能看
 - **不要重新装nvidia显卡驱动**，容器内已经包含驱动，重装会导致容器环境损坏。
 可以装**cudnn**和**nvcc**，但是高版本`pytorch`已经不需要自己单独装`cudnnn`这些的，直接复制[pytorch官网](https://pytorch.org/)安装命令即可。
 
-- 可以自行修改容器密码，但是**禁止使用弱密码**，因为容器对外网开放，会导致病毒入侵。
+- 可以自行修改容器密码，设置秘钥登录等。但是**禁止使用弱密码**，因为容器对外网开放，会导致病毒入侵。
 
 - 禁止使用命令`pkill -u root`，这个命令会中止root的所有进程，root用户包含很多系统进程，请使用固定的进程号杀死程序，如`kill -9 progress_id`。
 
-- 在备份数据进入NAS时，`mv`指令有时会报错，可以使用`cp`指令。同时删除nas文件时也请检查清楚，防止误删（其实误删也可以恢复，但比较麻烦。）
+## 四、 使用建议
+
+- 请经常将数据备份进入NAS。 在备份数据进入NAS时，`mv`指令有时会报错，可以使用`cp`指令。同时删除nas文件时也请检查清楚，防止误删（其实误删也可以恢复，但比较麻烦。）
+
+- 较新型号的GPU需要使用高版本`pytorch`，注意代码兼容性问题
+
+- 20系列以后的GPU使用混合精度运算，可以获得很好的加速
+
+- GPU空闲、CPU不够、有类似硬件错误之类的问题及时报告管理员修复。

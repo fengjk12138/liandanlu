@@ -1,6 +1,6 @@
 ---
 # This is the title of the article
-title: 如何配置容器系统
+title: 如何配置模板容器、迁移用户容器
 # This is the icon of the page
 icon: page
 # This control sidebar order
@@ -122,4 +122,42 @@ lxc image export template ./template/
 
 - 之后可以将模板容器复制到nas中，保存起来，方便其他机器使用
 
-## 二、 构建用户容器
+
+## 二、 迁移用户容器
+
+## 1. 打包源服务器容器
+
+- 关停需要迁移的用户的容器
+```shell
+lxc stop mars-huanghansheng
+```
+
+- 将容器打包成镜像
+```shell
+lxc publish mars-huanghansheng --alias mars-huanghansheng
+```
+
+- 导出镜像为压缩文件
+```shell
+mkdir huanghansheng
+lxc image export mars-huanghansheng ./huanghansheng/
+```
+
+- 拷贝镜像进入nas中
+
+## 2. 在新服务器中创建镜像
+
+- 将压缩包导入为镜像
+```shell
+lxc image import /mnt/nas-resource-linkdata/容器镜像/huanghansheng/****.tar.gz --alias huanghansheng
+```
+
+- 创建新的容器实例
+```shell
+lxc launch huanghansheng vulcan-huanghansheng
+```
+
+- 后面就是设备设置之类的工作，参考
+**[创建新的用户容器](./newuser.md)**
+
+

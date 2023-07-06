@@ -1,8 +1,8 @@
 ---
 # This is the title of the article
-title: 服务器网络配置、翻墙、国外资源加速
+title: 国外资源加速、网络配置
 # This is the icon of the page
-icon: page
+icon: network
 # This control sidebar order
 order: 1
 # Set author
@@ -103,9 +103,20 @@ function unset_proxy(){
     unset all_proxy
 }
 ```
+之后
+```shell
+source ~/.bashrc
+```
 
 这样在命令行内调用命令`set_proxy`之后，即可应对所有代理情况；使用`unset_proxy`命令即可解除代理。
 :::
+
+- `apt-get`通过上述方法还是没办法解决代理问题，下面这样解决，加入`-o Acquire::http::proxy=$http_proxy`这个命令在尾部
+```shell
+#加上你已经将上述建议加入了`.bashrc`
+set_proxy
+sudo apt-get install xxxxxx -o Acquire::http::proxy=$http_proxy
+```
 
 
 ### 3. 网盘/外网资源下载

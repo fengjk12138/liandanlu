@@ -11,6 +11,8 @@ export const pagesComponents = {
   "v-7f11024d": defineAsyncComponent(() => import(/* webpackChunkName: "v-7f11024d" */"/www/liandanlu/src/.vuepress/.temp/pages/NASdocs/index.html.vue")),
   // path: /overview/
   "v-5c0dd206": defineAsyncComponent(() => import(/* webpackChunkName: "v-5c0dd206" */"/www/liandanlu/src/.vuepress/.temp/pages/overview/index.html.vue")),
+  // path: /overview/gpu.html
+  "v-264ff4ac": defineAsyncComponent(() => import(/* webpackChunkName: "v-264ff4ac" */"/www/liandanlu/src/.vuepress/.temp/pages/overview/gpu.html.vue")),
   // path: /zh/
   "v-2d0ad528": defineAsyncComponent(() => import(/* webpackChunkName: "v-2d0ad528" */"/www/liandanlu/src/.vuepress/.temp/pages/zh/index.html.vue")),
   // path: /zh/slides.html
@@ -19,6 +21,8 @@ export const pagesComponents = {
   "v-9a6cd902": defineAsyncComponent(() => import(/* webpackChunkName: "v-9a6cd902" */"/www/liandanlu/src/.vuepress/.temp/pages/GPUdocs/deploy/container.html.vue")),
   // path: /GPUdocs/deploy/host.html
   "v-8e6b356c": defineAsyncComponent(() => import(/* webpackChunkName: "v-8e6b356c" */"/www/liandanlu/src/.vuepress/.temp/pages/GPUdocs/deploy/host.html.vue")),
+  // path: /GPUdocs/deploy/newuser.html
+  "v-65c31295": defineAsyncComponent(() => import(/* webpackChunkName: "v-65c31295" */"/www/liandanlu/src/.vuepress/.temp/pages/GPUdocs/deploy/newuser.html.vue")),
   // path: /GPUdocs/user/
   "v-4ee8dc23": defineAsyncComponent(() => import(/* webpackChunkName: "v-4ee8dc23" */"/www/liandanlu/src/.vuepress/.temp/pages/GPUdocs/user/index.html.vue")),
   // path: /GPUdocs/user/acc.html

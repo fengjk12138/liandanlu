@@ -55,7 +55,37 @@ lxc image <span class="token builtin class-name">export</span> template ./templa
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
 <li>之后可以将模板容器复制到nas中，保存起来，方便其他机器使用</li>
 </ul>
-<h2 id="二、-构建用户容器" tabindex="-1"><a class="header-anchor" href="#二、-构建用户容器" aria-hidden="true">#</a> 二、 构建用户容器</h2>
+<h2 id="二、-迁移用户容器" tabindex="-1"><a class="header-anchor" href="#二、-迁移用户容器" aria-hidden="true">#</a> 二、 迁移用户容器</h2>
+<h2 id="_1-打包源服务器容器" tabindex="-1"><a class="header-anchor" href="#_1-打包源服务器容器" aria-hidden="true">#</a> 1. 打包源服务器容器</h2>
+<ul>
+<li>关停需要迁移的用户的容器</li>
+</ul>
+<div class="language-bash line-numbers-mode" data-ext="sh"><pre v-pre class="language-bash"><code>lxc stop mars-huanghansheng
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ul>
+<li>将容器打包成镜像</li>
+</ul>
+<div class="language-bash line-numbers-mode" data-ext="sh"><pre v-pre class="language-bash"><code>lxc publish mars-huanghansheng <span class="token parameter variable">--alias</span> mars-huanghansheng
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ul>
+<li>导出镜像为压缩文件</li>
+</ul>
+<div class="language-bash line-numbers-mode" data-ext="sh"><pre v-pre class="language-bash"><code><span class="token function">mkdir</span> huanghansheng
+lxc image <span class="token builtin class-name">export</span> mars-huanghansheng ./huanghansheng/
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><ul>
+<li>拷贝镜像进入nas中</li>
+</ul>
+<h2 id="_2-在新服务器中创建镜像" tabindex="-1"><a class="header-anchor" href="#_2-在新服务器中创建镜像" aria-hidden="true">#</a> 2. 在新服务器中创建镜像</h2>
+<ul>
+<li>将压缩包导入为镜像</li>
+</ul>
+<div class="language-bash line-numbers-mode" data-ext="sh"><pre v-pre class="language-bash"><code>lxc image <span class="token function">import</span> /mnt/nas-resource-linkdata/容器镜像/huanghansheng/****.tar.gz <span class="token parameter variable">--alias</span> huanghansheng
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ul>
+<li>创建新的容器实例</li>
+</ul>
+<div class="language-bash line-numbers-mode" data-ext="sh"><pre v-pre class="language-bash"><code>lxc launch huanghansheng vulcan-huanghansheng
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ul>
+<li>后面就是设备设置之类的工作，参考
+<strong><RouterLink to="/GPUdocs/deploy/newuser.html">创建新的用户容器</RouterLink></strong></li>
+</ul>
 </div></template>
 
 

@@ -10,7 +10,7 @@ export const enNavbar = navbar([
       {
         text: "管理运维",
         icon: "puzzle-piece",
-        children: [ { text: "主机的配置", icon: "more", link: "" },  { text: "容器配置", icon: "more", link: "" }],
+        children: [ { text: "配置物理机", icon: "more", link: "" },  { text: "新建个人容器", icon: "more", link: "" }],
       },
       {
         text: "快速上手",

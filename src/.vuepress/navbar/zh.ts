@@ -3,6 +3,11 @@ import { navbar } from "vuepress-theme-hope";
 export const zhNavbar = navbar([
   "/",
   {
+    text: "Overview",
+    icon: "support",
+    link: "/overview"
+  },
+  {
     text: "GPU服务器文档",
     icon: "computer",
     prefix: "/GPUdocs/",
@@ -10,12 +15,17 @@ export const zhNavbar = navbar([
       {
         text: "管理运维",
         icon: "puzzle-piece",
-        children: [ { text: "主机的配置", icon: "creative", link: "deploy/host.md" },  { text: "容器配置", icon: "config", link: "deploy/container.md" }],
+        children: [ { text: "物理机配置", icon: "computer", link: "deploy/host.md" },  
+                    { text: "新建个人容器", icon: "config", link: "deploy/newuser.md" },
+                    { text: "模板构建、容器迁移", icon: "creative", link: "deploy/container.md" }],
       },
       {
-        text: "快速上手",
+        text: "用户使用",
         icon: "more",
-        children: [{ text: "GPU服务器使用文档", icon: "more", link: "user" }],
+        children: [{ text: "快速上手", icon: "more", link: "user/fast.md" },
+                   { text: "国外资源加速、网络配置", icon: "network", link: "user/network.md" },
+                   { text: "NAS的使用", icon: "note", link: "user/nas.md" },
+            ],
       },
     ],
   },

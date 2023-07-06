@@ -3,8 +3,8 @@
 <p>使用NAS存储技术可以增加每个人的存储空间、同步多机之间的数据、降低存储成本、降低坏盘风险。</p>
 <div class="hint-container info">
 <p class="hint-container-title">NAS存储设计理念</p>
-<p>外部存储，存储设备和计算设备（GPU）分离，不在同一台机器上。NAS的空间很大（至少20T以上）。
-在GPU服务器上的提现就是一个目录而已，和平时用没有任何区别。</p>
+<p>存储设备和计算设备（GPU）分离，不在同一台机器上。NAS的空间很大（至少20T以上）。
+在GPU服务器上的体现就是一个目录而已，和其他目录的使用没有任何区别。</p>
 </div>
 <h2 id="一、-gpu服务器上的使用方式" tabindex="-1"><a class="header-anchor" href="#一、-gpu服务器上的使用方式" aria-hidden="true">#</a> 一、 GPU服务器上的使用方式</h2>
 <p>在你的容器内使用命令<code v-pre>df -h</code>可以看到容器的存储挂载分布。</p>

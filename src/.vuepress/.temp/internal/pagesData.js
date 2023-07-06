@@ -9,6 +9,8 @@ export const pagesData = {
   "v-7f11024d": () => import(/* webpackChunkName: "v-7f11024d" */"/www/liandanlu/src/.vuepress/.temp/pages/NASdocs/index.html.js").then(({ data }) => data),
   // path: /overview/
   "v-5c0dd206": () => import(/* webpackChunkName: "v-5c0dd206" */"/www/liandanlu/src/.vuepress/.temp/pages/overview/index.html.js").then(({ data }) => data),
+  // path: /overview/gpu.html
+  "v-264ff4ac": () => import(/* webpackChunkName: "v-264ff4ac" */"/www/liandanlu/src/.vuepress/.temp/pages/overview/gpu.html.js").then(({ data }) => data),
   // path: /zh/
   "v-2d0ad528": () => import(/* webpackChunkName: "v-2d0ad528" */"/www/liandanlu/src/.vuepress/.temp/pages/zh/index.html.js").then(({ data }) => data),
   // path: /zh/slides.html
@@ -17,6 +19,8 @@ export const pagesData = {
   "v-9a6cd902": () => import(/* webpackChunkName: "v-9a6cd902" */"/www/liandanlu/src/.vuepress/.temp/pages/GPUdocs/deploy/container.html.js").then(({ data }) => data),
   // path: /GPUdocs/deploy/host.html
   "v-8e6b356c": () => import(/* webpackChunkName: "v-8e6b356c" */"/www/liandanlu/src/.vuepress/.temp/pages/GPUdocs/deploy/host.html.js").then(({ data }) => data),
+  // path: /GPUdocs/deploy/newuser.html
+  "v-65c31295": () => import(/* webpackChunkName: "v-65c31295" */"/www/liandanlu/src/.vuepress/.temp/pages/GPUdocs/deploy/newuser.html.js").then(({ data }) => data),
   // path: /GPUdocs/user/
   "v-4ee8dc23": () => import(/* webpackChunkName: "v-4ee8dc23" */"/www/liandanlu/src/.vuepress/.temp/pages/GPUdocs/user/index.html.js").then(({ data }) => data),
   // path: /GPUdocs/user/acc.html

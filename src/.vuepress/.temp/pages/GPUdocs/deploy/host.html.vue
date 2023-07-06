@@ -1,6 +1,4 @@
-<template><div><h2 id="news" tabindex="-1"><a class="header-anchor" href="#news" aria-hidden="true">#</a> NEWS</h2>
-<p>2023/06/23修改， 引入新的端口映射方式与桥接方式，更加方便统一配置，减少工作量</p>
-<h2 id="安装系统" tabindex="-1"><a class="header-anchor" href="#安装系统" aria-hidden="true">#</a> 安装系统</h2>
+<template><div><h2 id="一、-安装系统" tabindex="-1"><a class="header-anchor" href="#一、-安装系统" aria-hidden="true">#</a> 一、 安装系统</h2>
 <h2 id="_1-系统安装过程" tabindex="-1"><a class="header-anchor" href="#_1-系统安装过程" aria-hidden="true">#</a> 1. 系统安装过程</h2>
 <p>使用U盘启动盘安装系统，一般选择最新版本Ubuntu系统安装</p>
 <ul>
@@ -21,52 +19,69 @@
 </li>
 </ul>
 <h2 id="_2-系统初始化" tabindex="-1"><a class="header-anchor" href="#_2-系统初始化" aria-hidden="true">#</a> 2. 系统初始化</h2>
-<h3 id="_1-1-网桥配置" tabindex="-1"><a class="header-anchor" href="#_1-1-网桥配置" aria-hidden="true">#</a> 1.1 网桥配置</h3>
-<p>首先进行网络桥接，将所有的万兆网口桥接在一起，形成网桥<code v-pre>br0</code>，这样的话，网线插主机的任何网口都可以正常dhcp了</p>
-<p>同时网络桥接可以让lxd的容器也与主机共享网桥，从而完成网络互联互通</p>
-<p>一般在路由器上设置静态ip，不在主机上设置静态地址，这样可以让主机在其他网络情况下也能正常上网（当然也可以改，做好记录就行）</p>
+<h3 id="_2-1-主机网络配置" tabindex="-1"><a class="header-anchor" href="#_2-1-主机网络配置" aria-hidden="true">#</a> 2.1 主机网络配置</h3>
+<!-- 首先进行网络桥接，将所有的万兆网口桥接在一起，形成网桥`br0`，这样的话，网线插主机的任何网口都可以正常dhcp了
+
+同时网络桥接可以让lxd的容器也与主机共享网桥，从而完成网络互联互通
+
+一般在路由器上设置静态ip，不在主机上设置静态地址，这样可以让主机在其他网络情况下也能正常上网（当然也可以改，做好记录就行） 
+
+
+- 进入`/etc/netplan`  
+```bash
+cd /etc/netplan
+```
+
+- 修改配置文件为桥接模式，一般命名网桥为`br0`；
+
+代码含义为：取消所有接口的dhcp功能，之后
+
+
+```yaml
+# 修改后如下
+# This is the network config written by 'subiquity'
+network:
+ethernets:
+    enp129s0f0:
+    dhcp4: false
+    enp129s0f1:
+    dhcp4: false
+    enp5s0f0:
+    dhcp4: false
+    enp5s0f1:
+    dhcp4: false
+bridges:
+    br0:
+    dhcp4: true
+    dhcp6: true
+    interfaces:
+        - enp129s0f0
+        - enp129s0f1
+        - enp5s0f0
+        - enp5s0f1
+version: 2
+```
+
+- 应用修稿好的配置文件
+```bash
+sudo netplan apply
+``` -->
 <ul>
-<li>进入<code v-pre>/etc/netplan</code></li>
+<li>
+<p><strong>在路由器上给主机设置静态IP</strong>和端口映射</p>
+<ul>
+<li>登入路由器后台，按照mac地址分配静态ip。<strong>请按照规则编码设置</strong>，防止IP冲突或者找不到机器</li>
+<li>在路由器上设置这台机器的<strong>端口转发</strong>，一般将100个端口转发给一个机器，比如</li>
 </ul>
-<div class="language-bash line-numbers-mode" data-ext="sh"><pre v-pre class="language-bash"><code><span class="token builtin class-name">cd</span> /etc/netplan
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ul>
-<li>修改配置文件为桥接模式，一般命名网桥为<code v-pre>br0</code>；</li>
+<div class="language-text line-numbers-mode" data-ext="text"><pre v-pre class="language-text"><code>40x00,40x10-40x99  →  22,40x10-40x99
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>其中<code v-pre>40x00</code>端口用于物理主机的ssh链接，其余的端口均给主机内的容器使用。</p>
+<ul>
+<li>主机重新获取IP</li>
 </ul>
-<p>代码含义为：取消所有接口的dhcp功能，之后</p>
-<div class="language-yaml line-numbers-mode" data-ext="yml"><pre v-pre class="language-yaml"><code><span class="token comment"># 修改后如下</span>
-<span class="token comment"># This is the network config written by 'subiquity'</span>
-<span class="token key atrule">network</span><span class="token punctuation">:</span>
-<span class="token key atrule">ethernets</span><span class="token punctuation">:</span>
-    <span class="token key atrule">enp129s0f0</span><span class="token punctuation">:</span>
-    <span class="token key atrule">dhcp4</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
-    <span class="token key atrule">enp129s0f1</span><span class="token punctuation">:</span>
-    <span class="token key atrule">dhcp4</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
-    <span class="token key atrule">enp5s0f0</span><span class="token punctuation">:</span>
-    <span class="token key atrule">dhcp4</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
-    <span class="token key atrule">enp5s0f1</span><span class="token punctuation">:</span>
-    <span class="token key atrule">dhcp4</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
-<span class="token key atrule">bridges</span><span class="token punctuation">:</span>
-    <span class="token key atrule">br0</span><span class="token punctuation">:</span>
-    <span class="token key atrule">dhcp4</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
-    <span class="token key atrule">dhcp6</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
-    <span class="token key atrule">interfaces</span><span class="token punctuation">:</span>
-        <span class="token punctuation">-</span> enp129s0f0
-        <span class="token punctuation">-</span> enp129s0f1
-        <span class="token punctuation">-</span> enp5s0f0
-        <span class="token punctuation">-</span> enp5s0f1
-<span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token number">2</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
-<li>应用修稿好的配置文件</li>
+<div class="language-bash line-numbers-mode" data-ext="sh"><pre v-pre class="language-bash"><code><span class="token function">sudo</span> dhclient eno1
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
 </ul>
-<div class="language-bash line-numbers-mode" data-ext="sh"><pre v-pre class="language-bash"><code><span class="token function">sudo</span> netplan apply
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ul>
-<li><strong>在路由器上配置静态IP</strong>和端口映射</li>
-</ul>
-<div class="hint-container info">
-<p class="hint-container-title">相关信息</p>
-<p>以后的端口映射（甚至dhcp）大概会使用容器内的软路由进行分配，不需要在登录路由器进行配置。//ToDo List</p>
-</div>
-<h3 id="_1-2-驱动安装" tabindex="-1"><a class="header-anchor" href="#_1-2-驱动安装" aria-hidden="true">#</a> 1.2 驱动安装</h3>
+<h3 id="_2-2-驱动安装" tabindex="-1"><a class="header-anchor" href="#_2-2-驱动安装" aria-hidden="true">#</a> 2.2 驱动安装</h3>
 <p>安装英伟达显卡驱动程序</p>
 <div class="hint-container tip">
 <p class="hint-container-title">提示</p>
@@ -76,12 +91,13 @@
 <ul>
 <li>直接安装最新版nvidia显卡驱动，利用<code v-pre>apt</code>进行安装</li>
 </ul>
-<div class="language-bash line-numbers-mode" data-ext="sh"><pre v-pre class="language-bash"><code><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> nvidia-driver-525
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ul>
+<div class="language-bash line-numbers-mode" data-ext="sh"><pre v-pre class="language-bash"><code><span class="token function">sudo</span> <span class="token function">apt</span> update
+<span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> nvidia-driver-525
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><ul>
 <li>重启电脑</li>
 </ul>
 <div class="language-text line-numbers-mode" data-ext="text"><pre v-pre class="language-text"><code>sudo reboot
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h3 id="_1-3-安装必要的软件" tabindex="-1"><a class="header-anchor" href="#_1-3-安装必要的软件" aria-hidden="true">#</a> 1.3 安装必要的软件</h3>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h3 id="_2-3-安装必要的软件" tabindex="-1"><a class="header-anchor" href="#_2-3-安装必要的软件" aria-hidden="true">#</a> 2.3 安装必要的软件</h3>
 <p>安装网络、性能监控、zfs、cifs等软件，方便以后的使用和监控</p>
 <ul>
 <li>更新安装包</li>
@@ -94,7 +110,7 @@
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ul>
 <li>关闭<code v-pre>apt</code>自动更新，防止驱动自动更新造成不兼容情况//ToDo List</li>
 </ul>
-<h3 id="_1-4-在-mnt下挂载nas" tabindex="-1"><a class="header-anchor" href="#_1-4-在-mnt下挂载nas" aria-hidden="true">#</a> 1.4 在<code v-pre>/mnt</code>下挂载<code v-pre>NAS</code></h3>
+<h3 id="_2-4-在-mnt下挂载nas" tabindex="-1"><a class="header-anchor" href="#_2-4-在-mnt下挂载nas" aria-hidden="true">#</a> 2.4 在<code v-pre>/mnt</code>下挂载<code v-pre>NAS</code></h3>
 <ul>
 <li>在<code v-pre>/mnt</code>下创建<code v-pre>NAS</code>文件夹</li>
 </ul>
@@ -117,15 +133,25 @@
 <li>重新加载<code v-pre>/etc/fstab</code>文件</li>
 </ul>
 <div class="language-bash line-numbers-mode" data-ext="sh"><pre v-pre class="language-bash"><code><span class="token function">sudo</span> <span class="token function">mount</span> <span class="token parameter variable">-a</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2 id="容器管理器初始化" tabindex="-1"><a class="header-anchor" href="#容器管理器初始化" aria-hidden="true">#</a> 容器管理器初始化</h2>
-<h2 id="_1-5-初始化lxd" tabindex="-1"><a class="header-anchor" href="#_1-5-初始化lxd" aria-hidden="true">#</a> 1.5 初始化lxd</h2>
-<p>现在安装的<code v-pre>ubuntu22.04</code>的系统中，<code v-pre>lxd</code>都是默认安装的
-所以可以直接运行</p>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2 id="二、-容器管理器初始化" tabindex="-1"><a class="header-anchor" href="#二、-容器管理器初始化" aria-hidden="true">#</a> 二、 容器管理器初始化</h2>
+<h2 id="_1-初始化lxd" tabindex="-1"><a class="header-anchor" href="#_1-初始化lxd" aria-hidden="true">#</a> 1. 初始化lxd</h2>
+<p>现在安装的<code v-pre>ubuntu22.04</code>的系统中，<code v-pre>lxd</code>已经默认安装，所以可以直接运行，不过为了使用新特性方便，请升级到最新版本</p>
 <ul>
-<li>运行<code v-pre>lxd init</code>命令</li>
+<li>升级<code v-pre>lxd</code></li>
 </ul>
-<div class="language-bash line-numbers-mode" data-ext="sh"><pre v-pre class="language-bash"><code>clustering `
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2 id="_1-6-配置容器基础profile" tabindex="-1"><a class="header-anchor" href="#_1-6-配置容器基础profile" aria-hidden="true">#</a> 1.6 配置容器基础<code v-pre>profile</code></h2>
+<div class="language-bash line-numbers-mode" data-ext="sh"><pre v-pre class="language-bash"><code><span class="token function">sudo</span> snap refresh lxd <span class="token parameter variable">--channel</span><span class="token operator">=</span>latest
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ul>
+<li>运行初始化命令
+<ul>
+<li>后端选用<code v-pre>zfs</code>，尽量使用一个独立的磁盘</li>
+<li>网桥选择创建新的网桥<code v-pre>lxdbr0</code></li>
+<li>网桥的IPV4使用<code v-pre>172.16.0.1/16</code></li>
+</ul>
+</li>
+</ul>
+<div class="language-bash line-numbers-mode" data-ext="sh"><pre v-pre class="language-bash"><code>lxd init
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2 id="_2-配置容器基础profile" tabindex="-1"><a class="header-anchor" href="#_2-配置容器基础profile" aria-hidden="true">#</a> 2. 配置容器基础<code v-pre>profile</code></h2>
+<h3 id="_2-1-配置固定的权限和显卡驱动" tabindex="-1"><a class="header-anchor" href="#_2-1-配置固定的权限和显卡驱动" aria-hidden="true">#</a> 2.1 配置固定的权限和显卡驱动</h3>
 <p><code v-pre>profile</code>属于公共配置，在这里可以给本机内的所有容器配置完成</p>
 <ul>
 <li>修改<code v-pre>profile</code></li>
@@ -136,102 +162,50 @@
 <p>自动开启是为了在宿主机重启后，每个容器可以开机自启</p>
 <p>传递驱动是为了在容器内可以调用显卡</p>
 <p>允许容器嵌套是为了允许其他人可以在容器内使用<code v-pre>docker</code>的容器</p>
-<div class="language-yaml line-numbers-mode" data-ext="yml"><pre v-pre class="language-yaml"><code><span class="token key atrule">boot.autostart</span><span class="token punctuation">:</span> <span class="token string">"true"</span>
-<span class="token key atrule">nvidia.runtime</span><span class="token punctuation">:</span> <span class="token string">"true"</span>
-<span class="token key atrule">security.nesting</span><span class="token punctuation">:</span> <span class="token string">"true"</span>
+<div class="language-yaml line-numbers-mode" data-ext="yml"><pre v-pre class="language-yaml"><code>  <span class="token key atrule">boot.autostart</span><span class="token punctuation">:</span> <span class="token string">"true"</span>
+  <span class="token key atrule">nvidia.runtime</span><span class="token punctuation">:</span> <span class="token string">"true"</span>
+  <span class="token key atrule">security.nesting</span><span class="token punctuation">:</span> <span class="token string">"true"</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="hint-container danger">
 <p class="hint-container-title">高危操作</p>
 <p>一般不给容器开启<code v-pre>特权容器</code>选项，特权会导致容器可以修改系统内核配置，可能导致宿主机崩溃。</p>
 </div>
+<h3 id="_2-2-为容器挂载nas目录" tabindex="-1"><a class="header-anchor" href="#_2-2-为容器挂载nas目录" aria-hidden="true">#</a> 2.2 为容器挂载NAS目录</h3>
 <ul>
 <li>将<code v-pre>nas-resource-linkdata</code>等文件夹挂载进入容器内
-在<code v-pre>profile</code>的<code v-pre>device</code>下增加如下配置即可<div class="language-yaml line-numbers-mode" data-ext="yml"><pre v-pre class="language-yaml"><code><span class="token key atrule">mnt-resource</span><span class="token punctuation">:</span>
-  <span class="token key atrule">path</span><span class="token punctuation">:</span> /root/nas<span class="token punctuation">-</span>resource<span class="token punctuation">-</span>linkdata
-  <span class="token key atrule">source</span><span class="token punctuation">:</span> /mnt/nas<span class="token punctuation">-</span>resource<span class="token punctuation">-</span>linkdata
-  <span class="token key atrule">type</span><span class="token punctuation">:</span> disk
-<span class="token key atrule">mnt-public</span><span class="token punctuation">:</span>
-  <span class="token key atrule">path</span><span class="token punctuation">:</span> /mnt/nas<span class="token punctuation">-</span>public<span class="token punctuation">-</span>linkdata
-  <span class="token key atrule">source</span><span class="token punctuation">:</span> /mnt/nas<span class="token punctuation">-</span>public<span class="token punctuation">-</span>linkdata
-  <span class="token key atrule">type</span><span class="token punctuation">:</span> disk
+在<code v-pre>profile</code>的<code v-pre>device</code>下增加如下配置即可<div class="language-yaml line-numbers-mode" data-ext="yml"><pre v-pre class="language-yaml"><code>  <span class="token key atrule">mnt-resource</span><span class="token punctuation">:</span>
+    <span class="token key atrule">path</span><span class="token punctuation">:</span> /root/nas<span class="token punctuation">-</span>resource<span class="token punctuation">-</span>linkdata
+    <span class="token key atrule">source</span><span class="token punctuation">:</span> /mnt/nas<span class="token punctuation">-</span>resource<span class="token punctuation">-</span>linkdata
+    <span class="token key atrule">type</span><span class="token punctuation">:</span> disk
+  <span class="token key atrule">mnt-public</span><span class="token punctuation">:</span>
+    <span class="token key atrule">path</span><span class="token punctuation">:</span> /mnt/nas<span class="token punctuation">-</span>public<span class="token punctuation">-</span>linkdata
+    <span class="token key atrule">source</span><span class="token punctuation">:</span> /mnt/nas<span class="token punctuation">-</span>public<span class="token punctuation">-</span>linkdata
+    <span class="token key atrule">type</span><span class="token punctuation">:</span> disk
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 </ul>
-<h2 id="新创建用户容器初始化" tabindex="-1"><a class="header-anchor" href="#新创建用户容器初始化" aria-hidden="true">#</a> 新创建用户容器初始化</h2>
-<h3 id="将模板镜像导入" tabindex="-1"><a class="header-anchor" href="#将模板镜像导入" aria-hidden="true">#</a> 将模板镜像导入</h3>
+<h2 id="_3-添加网络forward端口转发-目前不需要了-已经使用proxy设备代替" tabindex="-1"><a class="header-anchor" href="#_3-添加网络forward端口转发-目前不需要了-已经使用proxy设备代替" aria-hidden="true">#</a> 3. 添加网络forward端口转发 （<strong>目前不需要了，已经使用proxy设备代替</strong>）</h2>
+<details class="hint-container details"><summary>详情</summary>
 <ul>
-<li>之前模板镜像已经保存为文件，我们将文件导入即可</li>
+<li>创造监听网络，监听本地IP，<em>不能使用0.0.0.0</em>作为ip</li>
 </ul>
-<div class="language-bash line-numbers-mode" data-ext="sh"><pre v-pre class="language-bash"><code>lxc image <span class="token function">import</span> /mnt/nas-resource-linkdata/容器镜像/template/****.tar.gz <span class="token parameter variable">--alias</span> template
+<div class="language-bash line-numbers-mode" data-ext="sh"><pre v-pre class="language-bash"><code>lxc network forward create lxdbr0 <span class="token number">10.10</span>.1.1
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ul>
-<li>导入之后我们使用这个镜像来初始化用户的容器</li>
+<li>创建端口映射。替换里面的ip地址为合适的地址即可。<strong>也可以在添加容器时添加端口映射，不在这里添加。</strong></li>
 </ul>
-<div class="language-bash line-numbers-mode" data-ext="sh"><pre v-pre class="language-bash"><code><span class="token comment"># 生成一个名为mars-huanghansheng的容器</span>
-lxc launch template mars-huanghansheng
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="用户容器基础配置" tabindex="-1"><a class="header-anchor" href="#用户容器基础配置" aria-hidden="true">#</a> 用户容器基础配置</h3>
-<ul>
-<li>修改用户<code v-pre>root</code>密码</li>
-</ul>
-<div class="hint-container note">
-<p class="hint-container-title">注</p>
-<p>按照正规的编码方式将每个人的密码进行修改，并且需要是强密码，因为nas数据是直连容器的。</p>
-<p>一般不会为了数据安全，每个人设置不同的密码。因为每个人容器的链接方式只有端口不同，如果一个人输错了端口，进入了其他人的容器可能造成严重后果。</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><pre v-pre class="language-bash"><code>lxc network forward port <span class="token function">add</span> lxdbr0 <span class="token number">10.10</span>.1.1 tcp <span class="token number">20010</span>-20019 <span class="token number">172.16</span>.1.1 <span class="token number">22,20011</span>-20019
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>这个命令的含义是，将20010转发给<code v-pre>172.16.1.1</code>的22端口；将20011-20019转发给<code v-pre>172.16.1.1</code>的20011-20019端口</p>
+</details>
+<h2 id="三、-注意事项" tabindex="-1"><a class="header-anchor" href="#三、-注意事项" aria-hidden="true">#</a> 三、 注意事项</h2>
+<div class="hint-container danger">
+<p class="hint-container-title">警告</p>
+<p>管理员请仔细阅读，不然会造成严重事故或数据丢失。</p>
 </div>
-<div class="language-bash line-numbers-mode" data-ext="sh"><pre v-pre class="language-bash"><code>lxc <span class="token builtin class-name">exec</span> mars-huanghansheng -- <span class="token function">passwd</span> root
-新密码： ***
-重复密码：***
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
-<li>配置静态ip</li>
-</ul>
-<div class="language-bash line-numbers-mode" data-ext="sh"><pre v-pre class="language-bash"><code>lxc network attach lxdbr0 mars-huanghansheng eth0 eth0
-lxc config device <span class="token builtin class-name">set</span> mars-huanghansheng eth0 ipv4.address <span class="token number">172.16</span>.4.1
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p><code v-pre>attach</code>的eth0可以不用</p>
-<p>修改个人配置文件</p>
-<div class="language-bash line-numbers-mode" data-ext="sh"><pre v-pre class="language-bash"><code>lxc config edit mars-huanghansheng
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ul>
+<ul>
 <li>
-<p>挂载每个人自己的NAS文件</p>
-<p>在<code v-pre>device</code>下增加如下配置</p>
-<div class="language-yaml line-numbers-mode" data-ext="yml"><pre v-pre class="language-yaml"><code><span class="token key atrule">nas-public-linkdata</span><span class="token punctuation">:</span>
-  <span class="token key atrule">path</span><span class="token punctuation">:</span> /root/nas<span class="token punctuation">-</span>public<span class="token punctuation">-</span>linkdata
-  <span class="token key atrule">source</span><span class="token punctuation">:</span> /mnt/nas<span class="token punctuation">-</span>public<span class="token punctuation">-</span>linkdata/huanghansheng
-  <span class="token key atrule">type</span><span class="token punctuation">:</span> disk
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<p><strong>物理主机</strong>内不要用<code v-pre>docker</code>，引起<code v-pre>docker</code>创建的网桥<code v-pre>docker0</code>影响网络数据传输给lxd容器。会造成容器断网。
+详见<a href="https://linuxcontainers.org/lxd/docs/latest/howto/network_bridge_firewalld/#prevent-connectivity-issues-with-lxd-and-docker" target="_blank" rel="noopener noreferrer">lxd官方文档<ExternalLinkIcon/></a>。</p>
+<p><strong>容器内可以使用docker</strong>，如果需要使用docker请在lxd容器内使用。</p>
+</li>
 </ul>
-<div class="hint-container note">
-<p class="hint-container-title">注</p>
-<p>一般只给每个人分配自己的目录，不会直接挂载整个public目录给他，因为这样可以更方便操作自己的文件夹，也防止病毒入侵后误删其他人的文件</p>
-</div>
-<ul>
-<li>为每个人分配GPU
-在<code v-pre>device</code>下增加如下配置，按照<code v-pre>pci</code>的数值进行分配即可，<div class="language-yaml line-numbers-mode" data-ext="yml"><pre v-pre class="language-yaml"><code><span class="token key atrule">gpu0</span><span class="token punctuation">:</span>
-  <span class="token key atrule">pci</span><span class="token punctuation">:</span> 0000<span class="token punctuation">:</span>05<span class="token punctuation">:</span><span class="token number">00.0</span>
-  <span class="token key atrule">type</span><span class="token punctuation">:</span> gpu
-<span class="token key atrule">gpu3</span><span class="token punctuation">:</span>
-  <span class="token key atrule">pci</span><span class="token punctuation">:</span> 0000<span class="token punctuation">:</span>88<span class="token punctuation">:</span><span class="token number">00.0</span>
-  <span class="token key atrule">type</span><span class="token punctuation">:</span> gpu
-<span class="token key atrule">gpu4</span><span class="token punctuation">:</span>
-  <span class="token key atrule">pci</span><span class="token punctuation">:</span> 0000<span class="token punctuation">:</span>89<span class="token punctuation">:</span><span class="token number">00.0</span>
-  <span class="token key atrule">type</span><span class="token punctuation">:</span> gpu
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
-</ul>
-<div class="hint-container info">
-<p class="hint-container-title">相关信息</p>
-<p>没办法使用<code v-pre>id</code>属性进行分配，这个应该是<code v-pre>lxd</code>的bug，在github提了相关<a href="https://github.com/lxc/lxd/issues/11442" target="_blank" rel="noopener noreferrer">issue<ExternalLinkIcon/></a>，但是尚未解决。</p>
-</div>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>GPU分配原则可以见其他文档//ToDo List</p>
-</div>
-<ul>
-<li>为每个人增加端口映射与静态地址
-按照规则编码方式，为每个容器设置静态地址与端口映射</li>
-</ul>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>静态地址设置可以在路由器中绑定MAC地址即可</p>
-<p>端口映射按照编码规则，在nginx容器中设置端口转发即可</p>
-</div>
-<h2 id="端口映射容器的开启" tabindex="-1"><a class="header-anchor" href="#端口映射容器的开启" aria-hidden="true">#</a> 端口映射容器的开启</h2>
-<p>开启一个容器，安装运行nginx</p>
 </div></template>
 
 

@@ -25,10 +25,9 @@ footer: Footer content for test
 # You can customize copyright content
 copyright: No Copyright
 ---
-## NEWS
-2023/06/23修改， 引入新的端口映射方式与桥接方式，更加方便统一配置，减少工作量
 
-## 安装系统
+
+## 一、 安装系统
 
 
 ## 1. 系统安装过程 
@@ -49,8 +48,8 @@ copyright: No Copyright
 ## 2. 系统初始化
 
 
-### 1.1 网桥配置
-首先进行网络桥接，将所有的万兆网口桥接在一起，形成网桥`br0`，这样的话，网线插主机的任何网口都可以正常dhcp了
+### 2.1 主机网络配置
+<!-- 首先进行网络桥接，将所有的万兆网口桥接在一起，形成网桥`br0`，这样的话，网线插主机的任何网口都可以正常dhcp了
 
 同时网络桥接可以让lxd的容器也与主机共享网桥，从而完成网络互联互通
 
@@ -95,15 +94,23 @@ version: 2
 - 应用修稿好的配置文件
 ```bash
 sudo netplan apply
-```
-
-- **在路由器上配置静态IP**和端口映射
-:::info
-以后的端口映射（甚至dhcp）大概会使用容器内的软路由进行分配，不需要在登录路由器进行配置。//ToDo List
-:::
+``` -->
 
 
-### 1.2 驱动安装
+- **在路由器上给主机设置静态IP**和端口映射
+
+  - 登入路由器后台，按照mac地址分配静态ip。**请按照规则编码设置**，防止IP冲突或者找不到机器
+  - 在路由器上设置这台机器的**端口转发**，一般将100个端口转发给一个机器，比如
+  ```
+  40x00,40x10-40x99  →  22,40x10-40x99
+  ```
+  其中`40x00`端口用于物理主机的ssh链接，其余的端口均给主机内的容器使用。
+
+  - 主机重新获取IP
+  ```shell
+  sudo dhclient eno1
+  ```
+### 2.2 驱动安装
 
 安装英伟达显卡驱动程序
 ::: tip 
@@ -114,6 +121,7 @@ sudo netplan apply
 
 - 直接安装最新版nvidia显卡驱动，利用`apt`进行安装
 ```bash
+sudo apt update
 sudo apt install nvidia-driver-525
 ```
 
@@ -122,7 +130,7 @@ sudo apt install nvidia-driver-525
 sudo reboot
 ```
 
-### 1.3 安装必要的软件
+### 2.3 安装必要的软件
 
 安装网络、性能监控、zfs、cifs等软件，方便以后的使用和监控
 
@@ -138,7 +146,7 @@ sudo apt install net-tools cifs-utils zfsutils-linux iotop sysstat nload libgl1 
 
 - 关闭`apt`自动更新，防止驱动自动更新造成不兼容情况//ToDo List
 
-### 1.4 在`/mnt`下挂载`NAS`
+### 2.4 在`/mnt`下挂载`NAS`
 
 - 在`/mnt`下创建`NAS`文件夹
 ```bash
@@ -172,20 +180,27 @@ sudo vim /etc/fstab
 sudo mount -a
 ```
 
-## 容器管理器初始化
+## 二、 容器管理器初始化
 
-## 1.5 初始化lxd
-现在安装的`ubuntu22.04`的系统中，`lxd`都是默认安装的
-所以可以直接运行
+## 1. 初始化lxd
+现在安装的`ubuntu22.04`的系统中，`lxd`已经默认安装，所以可以直接运行，不过为了使用新特性方便，请升级到最新版本
 
-- 运行`lxd init`命令
-
-```bash
-clustering `
+- 升级`lxd`
+```shell
+sudo snap refresh lxd --channel=latest
 ```
 
+- 运行初始化命令
+  - 后端选用`zfs`，尽量使用一个独立的磁盘
+  - 网桥选择创建新的网桥`lxdbr0`
+  - 网桥的IPV4使用`172.16.0.1/16`
+```bash
+lxd init
+```
 
-## 1.6 配置容器基础`profile`
+## 2. 配置容器基础`profile`
+
+### 2.1 配置固定的权限和显卡驱动
 
 `profile`属于公共配置，在这里可以给本机内的所有容器配置完成
 
@@ -205,117 +220,50 @@ lxc profile edit default
 
 允许容器嵌套是为了允许其他人可以在容器内使用`docker`的容器
 ```yaml
-boot.autostart: "true"
-nvidia.runtime: "true"
-security.nesting: "true"
+  boot.autostart: "true"
+  nvidia.runtime: "true"
+  security.nesting: "true"
 ```
 
 ::: danger 高危操作
 一般不给容器开启`特权容器`选项，特权会导致容器可以修改系统内核配置，可能导致宿主机崩溃。
 :::
 
+### 2.2 为容器挂载NAS目录
+
 - 将`nas-resource-linkdata`等文件夹挂载进入容器内
   在`profile`的`device`下增加如下配置即可
   ```yaml
-  mnt-resource:
-    path: /root/nas-resource-linkdata
-    source: /mnt/nas-resource-linkdata
-    type: disk
-  mnt-public:
-    path: /mnt/nas-public-linkdata
-    source: /mnt/nas-public-linkdata
-    type: disk
+    mnt-resource:
+      path: /root/nas-resource-linkdata
+      source: /mnt/nas-resource-linkdata
+      type: disk
+    mnt-public:
+      path: /mnt/nas-public-linkdata
+      source: /mnt/nas-public-linkdata
+      type: disk
   ```
 
-
-## 新创建用户容器初始化
-
-### 将模板镜像导入
-
-
-- 之前模板镜像已经保存为文件，我们将文件导入即可
-```bash
-lxc image import /mnt/nas-resource-linkdata/容器镜像/template/****.tar.gz --alias template
-```
-- 导入之后我们使用这个镜像来初始化用户的容器
-```bash
-# 生成一个名为mars-huanghansheng的容器
-lxc launch template mars-huanghansheng
-```
-
-### 用户容器基础配置
-
-- 修改用户`root`密码
-
-::: note
-按照正规的编码方式将每个人的密码进行修改，并且需要是强密码，因为nas数据是直连容器的。
-
-一般不会为了数据安全，每个人设置不同的密码。因为每个人容器的链接方式只有端口不同，如果一个人输错了端口，进入了其他人的容器可能造成严重后果。
-:::
-
-```bash
-lxc exec mars-huanghansheng -- passwd root
-新密码： ***
-重复密码：***
-```
-
-- 配置静态ip
+## 3. 添加网络forward端口转发 （**目前不需要了，已经使用proxy设备代替**）
+:::details
+- 创造监听网络，监听本地IP，*不能使用0.0.0.0*作为ip
 ```shell
-lxc network attach lxdbr0 mars-huanghansheng eth0 eth0
-lxc config device set mars-huanghansheng eth0 ipv4.address 172.16.4.1
-```
-`attach`的eth0可以不用
-
-修改个人配置文件
-
-```bash
-lxc config edit mars-huanghansheng
+lxc network forward create lxdbr0 10.10.1.1
 ```
 
-- 挂载每个人自己的NAS文件
-
-  在`device`下增加如下配置
-  ```yaml
-  nas-public-linkdata:
-    path: /root/nas-public-linkdata
-    source: /mnt/nas-public-linkdata/huanghansheng
-    type: disk
-  ```
-:::note
-一般只给每个人分配自己的目录，不会直接挂载整个public目录给他，因为这样可以更方便操作自己的文件夹，也防止病毒入侵后误删其他人的文件
+- 创建端口映射。替换里面的ip地址为合适的地址即可。**也可以在添加容器时添加端口映射，不在这里添加。**
+```shell
+lxc network forward port add lxdbr0 10.10.1.1 tcp 20010-20019 172.16.1.1 22,20011-20019
+```
+这个命令的含义是，将20010转发给`172.16.1.1`的22端口；将20011-20019转发给`172.16.1.1`的20011-20019端口
 :::
 
-- 为每个人分配GPU
-  在`device`下增加如下配置，按照`pci`的数值进行分配即可，
-  ```yaml
-  gpu0:
-    pci: 0000:05:00.0
-    type: gpu
-  gpu3:
-    pci: 0000:88:00.0
-    type: gpu
-  gpu4:
-    pci: 0000:89:00.0
-    type: gpu
-  ```
-:::info
-没办法使用`id`属性进行分配，这个应该是`lxd`的bug，在github提了相关[issue](https://github.com/lxc/lxd/issues/11442)，但是尚未解决。
+## 三、 注意事项
+:::danger
+管理员请仔细阅读，不然会造成严重事故或数据丢失。
 :::
 
-:::tip
-GPU分配原则可以见其他文档//ToDo List
-:::
+- **物理主机**内不要用`docker`，引起`docker`创建的网桥`docker0`影响网络数据传输给lxd容器。会造成容器断网。
+详见[lxd官方文档](https://linuxcontainers.org/lxd/docs/latest/howto/network_bridge_firewalld/#prevent-connectivity-issues-with-lxd-and-docker)。
 
-- 为每个人增加端口映射与静态地址
-按照规则编码方式，为每个容器设置静态地址与端口映射
-:::tip
-静态地址设置可以在路由器中绑定MAC地址即可
-
-端口映射按照编码规则，在nginx容器中设置端口转发即可
-:::
-
-
-
-## 端口映射容器的开启
-
-开启一个容器，安装运行nginx
+  **容器内可以使用docker**，如果需要使用docker请在lxd容器内使用。

@@ -16,9 +16,9 @@ export default hopeTheme({
 
   logo: "/mama.jpg",
 
-  repo: "vuepress-theme-hope/vuepress-theme-hope",
+  repo: "fengjk12138/liandanlu",
 
-  docsDir: "demo/theme-docs/src", //github地址路径
+  docsDir: "src", //github地址路径
 
   locales: {
     "/": {

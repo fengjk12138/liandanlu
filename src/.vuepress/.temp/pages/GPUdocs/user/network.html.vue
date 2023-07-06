@@ -68,9 +68,17 @@ pip <span class="token function">install</span> ~/nas-resource-linkdata/software
     <span class="token builtin class-name">unset</span> https_proxy
     <span class="token builtin class-name">unset</span> all_proxy
 <span class="token punctuation">}</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这样在命令行内调用命令<code v-pre>set_proxy</code>之后，即可应对所有代理情况；使用<code v-pre>unset_proxy</code>命令即可解除代理。</p>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>之后</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><pre v-pre class="language-bash"><code><span class="token builtin class-name">source</span> ~/.bashrc
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>这样在命令行内调用命令<code v-pre>set_proxy</code>之后，即可应对所有代理情况；使用<code v-pre>unset_proxy</code>命令即可解除代理。</p>
 </div>
-<h3 id="_3-网盘-外网资源下载" tabindex="-1"><a class="header-anchor" href="#_3-网盘-外网资源下载" aria-hidden="true">#</a> 3. 网盘/外网资源下载</h3>
+<ul>
+<li><code v-pre>apt-get</code>通过上述方法还是没办法解决代理问题，下面这样解决，加入<code v-pre>-o Acquire::http::proxy=$http_proxy</code>这个命令在尾部</li>
+</ul>
+<div class="language-bash line-numbers-mode" data-ext="sh"><pre v-pre class="language-bash"><code><span class="token comment">#加上你已经将上述建议加入了`.bashrc`</span>
+set_proxy
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> xxxxxx <span class="token parameter variable">-o</span> Acquire::http::proxy<span class="token operator">=</span><span class="token variable">$http_proxy</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-网盘-外网资源下载" tabindex="-1"><a class="header-anchor" href="#_3-网盘-外网资源下载" aria-hidden="true">#</a> 3. 网盘/外网资源下载</h3>
 <p>由于很多数据位于百度网盘或者国外网页中，我们也提供了下载方式。</p>
 <p>使用向日葵连接进入一台Windows电脑，电脑中已经启动了梯子和百度网盘（也有迅雷和阿里盘之类的）。使用Windows电脑下载资源</p>
 <div class="hint-container tip">
