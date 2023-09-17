@@ -2,7 +2,7 @@
 # This is the title of the article
 title: 如何配置模板容器、迁移用户容器
 # This is the icon of the page
-icon: page
+icon: truck-moving
 # This control sidebar order
 order: 1
 # Set author
@@ -11,11 +11,11 @@ author: fengjk
 date: 2023-04-09
 # A page can have multiple categories
 category:
-  - GPU服务器文档
+  - 管理员文档
 # A page can have multiple tags
 tag:
   - 服务器部署
-  - GPU服务器
+  - 容器
 # this page is sticky in article list
 sticky: true
 # this page will appear in starred articles

@@ -11,43 +11,53 @@ export const zhSidebar = sidebar({
     // },
     {
       text:"炼丹炉系统Overview",
-      icon: "info",
+      icon: "globe",
       prefix: "overview/",
       link: "overview/",
-      collapsible: true,
+      // collapsible: true,
       children: ["README.md", "gpu.md"]
 
     },
     {
-      text:"GPU服务器文档",
-      icon: "page",
-      prefix: "GPUdocs/",
-      link: "GPUdocs/",
-      collapsible: true,
+      text:"服务器使用",
+      icon: "lightbulb",
+      prefix: "Userdocs/",
+      link: "/Userdocs/fast/login",
+      // collapsible: true,
       children: [
         {
-          text:'用户文档',
-          icon: "computer",
-          prefix: 'user/',
-          children:["fast.md", "network.md", "nas.md", 'acc.md']
-        },
-        {
-          text: '管理员文档',
-          icon: 'config',
-          prefix: 'deploy',
+          text:'快速开始',
+          icon: "rocket",
+          prefix: 'fast',
+          link: "/Userdocs/fast/login",
           collapsible: true,
-          children: ['host.md', 'newuser.md', 'container.md']
+          children:["login.md", "container.md", "environment.md","network.md", 'faq.md']
+        },
+        // {
+        //   text: '管理员文档',
+        //   icon: 'config',
+        //   prefix: 'deploy',
+        //   collapsible: true,
+        //   children: ['host.md', 'newuser.md', 'container.md']
 
+        // }
+        {
+          text:'存储NAS使用',
+          icon: "database",
+          prefix: 'nas',
+          link: "/Userdocs/nas/whatis",
+          collapsible: true,
+          children:["whatis.md", "mount.md", "download.md", "alist.md", "show.md"]
         }
       ]
 
     },
-    {
-      text: "NAS文档",
-      icon: "note",
-      prefix: "NASdocs/",
-      link: "NASdocs/",
-      collapsible: true
-    },
+    // {
+    //   text: "存储NAS文档",
+    //   icon: "note",
+    //   prefix: "NASdocs/",
+    //   link: "NASdocs/",
+    //   collapsible: true
+    // },
   ],
 });

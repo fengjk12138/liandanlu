@@ -1,17 +1,23 @@
-<template><div><h2 id="前言" tabindex="-1"><a class="header-anchor" href="#前言" aria-hidden="true">#</a> 前言</h2>
+<template><div><div class="hint-container tip">
+<p class="hint-container-title">前言</p>
 <p>这是一个<strong>快速使用</strong>文档，会略去很多功能和细节，更多功能和方法可以参考<a href="../../GPUdocs"><strong>详细文档</strong></a></p>
-<h2 id="一、-登入服务器" tabindex="-1"><a class="header-anchor" href="#一、-登入服务器" aria-hidden="true">#</a> 一、 登入服务器</h2>
-<p>在你申请算力之后，管理员会给你容器的<strong>IP、端口、账号、密码</strong>，其中<strong>IP</strong>一般为我们的域名<code v-pre>位置.liandanlu.cn</code>，账号为<code v-pre>root</code>。</p>
+</div>
+<h2 id="一、-登入服务器" tabindex="-1"><a class="header-anchor" href="#一、-登入服务器" aria-hidden="true">#</a> <strong>一、 登入服务器</strong></h2>
+<p>申请算力之后，管理员会给你容器的<strong>IP、端口、账号、密码</strong>，</p>
+<p><strong>IP</strong>一般为域名<code v-pre>位置.liandanlu.cn</code>，账号为<code v-pre>root</code>。</p>
 <p>获得账密之后，你需要使用<strong>Xshell</strong>、<strong>xterm</strong>等软件连接，设置正确端口和账密之后就可以通过<code v-pre>ssh协议</code>连接进入容器系统，容器系统默认为<code v-pre>Ubuntu22.04</code>。</p>
-<figure><img src="@source/GPUdocs/user/img/xhshell1.png" alt="使用Xshell正确设置地址、端口" tabindex="0" loading="lazy"><figcaption>使用Xshell正确设置地址、端口</figcaption></figure>
-<figure><img src="@source/GPUdocs/user/img/xhshell2.png" alt="使用Xshell正确设置账密" tabindex="0" loading="lazy"><figcaption>使用Xshell正确设置账密</figcaption></figure>
+<figure><img src="@source/GPUdocs/user/img/xhshell1.png" alt="使用Xshell正确设置地址、端口" width="65%" height="auto" tabindex="0" loading="lazy"><figcaption>使用Xshell正确设置地址、端口</figcaption></figure>
+<figure><img src="@source/GPUdocs/user/img/xhshell2.png" alt="使用Xshell正确设置账密" width="65%" height="auto" tabindex="0" loading="lazy"><figcaption>使用Xshell正确设置账密</figcaption></figure>
 <p>容器的使用与环境安装需要有一定的Linux和Shell基础，不会的需要加紧学习，这是基础中的基础。</p>
-<h2 id="二、-使用说明" tabindex="-1"><a class="header-anchor" href="#二、-使用说明" aria-hidden="true">#</a> 二、 使用说明</h2>
+<h2 id="二、-使用说明" tabindex="-1"><a class="header-anchor" href="#二、-使用说明" aria-hidden="true">#</a> <strong>二、 使用说明</strong></h2>
+<h3 id="_1-容器技术" tabindex="-1"><a class="header-anchor" href="#_1-容器技术" aria-hidden="true">#</a> <strong>1. 容器技术</strong></h3>
 <p>连接进入容器之后，就可以开始使用服务器。</p>
 <p>服务器的物理机一般有8张GPU，但是为了每个人使用方便、防止抢占、环境隔离、权限管理，我们使用<strong>容器技术</strong>来隔离每个人的使用环境，并且为每个容器分配固定数量的GPU和CPU线程。</p>
-<blockquote>
+<div class="hint-container note">
+<p class="hint-container-title">容器技术</p>
 <p>容器技术一项伟大的发明，可以简单理解为虚拟机，在系统层面隔离每个人的使用环境，并且可以将容器打包、迁移、复制，实现每个人环境可以在不同计算机上的准确复现。详情可以了解<code v-pre>docker</code>、<code v-pre>liunxcontainer(lxc)</code>技术。</p>
-</blockquote>
+</div>
+<p>每个服务器的硬件配置和分配方式见<a href="">分封图</a></p>
 <ul>
 <li>
 <p>整个容器中的系统只属于使用者本人，可以任意重启、任意配置环境、任意修改，不用担心影响他人；</p>
@@ -31,7 +37,7 @@
 <p>服务器上网与翻墙方式在不同地点有不同配置方式，见详细文档。</p>
 </li>
 </ul>
-<h3 id="gpu分配原则" tabindex="-1"><a class="header-anchor" href="#gpu分配原则" aria-hidden="true">#</a> GPU分配原则</h3>
+<h3 id="_2-gpu分配原则" tabindex="-1"><a class="header-anchor" href="#_2-gpu分配原则" aria-hidden="true">#</a> <strong>2. GPU分配原则</strong></h3>
 <p>由于物理机有8张GPU，同时分配给所有人会导致严重的抢占，因此我们使用容器进行资源控制，每个人的容器只能访问一部分GPU。</p>
 <p>为每个人分配的GPU中，会包含<strong>独占卡</strong>和<strong>共享卡</strong>。</p>
 <div class="hint-container info">
@@ -81,6 +87,23 @@
 <p>GPU空闲、CPU不够、有类似硬件错误之类的问题及时报告管理员修复。</p>
 </li>
 </ul>
+<h2 id="faq" tabindex="-1"><a class="header-anchor" href="#faq" aria-hidden="true">#</a> FAQ</h2>
+<ul>
+<li>
+<ol>
+<li>如何在容器内挂载img镜像文件？</li>
+</ol>
+</li>
+</ul>
+<blockquote></blockquote>
+<ul>
+<li>
+<ol start="2">
+<li>GPU服务器无法多卡并行（DP、DDP），是什么原因？</li>
+</ol>
+</li>
+</ul>
+<blockquote></blockquote>
 </div></template>
 
 

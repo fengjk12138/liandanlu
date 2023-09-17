@@ -1,0 +1,14 @@
+export const data = JSON.parse("{\"key\":\"v-704f6579\",\"path\":\"/Userdocs/nas/alist.html\",\"title\":\"AList网页\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"AList网页\",\"icon\":\"wifi\",\"order\":1,\"author\":\"fengjk\",\"date\":\"2023-09-01T00:00:00.000Z\",\"category\":[\"GPU服务器文档\"],\"tag\":[\"使用技巧\",\"NAS存储\",\"GPU服务器\"],\"sticky\":true,\"star\":true,\"footer\":\"Footer content for test\",\"copyright\":\"No Copyright\",\"description\":\"前言 AList网页使我们的NAS的网页端，使用浏览器就可以打开。拥有极高的系统兼容性和方便程序。 同时拥有众多的功能。 只需要在浏览器内输入网址就可以打开网页端。 连接方法 在浏览器内输入网址：linkdata.liandanlu.cn:40000 使用展示 通过浏览器登录AList界面 可以观察到，网页端拥有实验室百度云目录和nas目录，可以下载、...\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"http://liandan.cn:8080/Userdocs/nas/alist.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"炼丹炉系统\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"AList网页\"}],[\"meta\",{\"property\":\"og:description\",\"content\":\"前言 AList网页使我们的NAS的网页端，使用浏览器就可以打开。拥有极高的系统兼容性和方便程序。 同时拥有众多的功能。 只需要在浏览器内输入网址就可以打开网页端。 连接方法 在浏览器内输入网址：linkdata.liandanlu.cn:40000 使用展示 通过浏览器登录AList界面 可以观察到，网页端拥有实验室百度云目录和nas目录，可以下载、...\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:image\",\"content\":\"http://liandan.cn:8080/\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}],[\"meta\",{\"name\":\"twitter:card\",\"content\":\"summary_large_image\"}],[\"meta\",{\"name\":\"twitter:image:alt\",\"content\":\"AList网页\"}],[\"meta\",{\"property\":\"article:author\",\"content\":\"fengjk\"}],[\"meta\",{\"property\":\"article:tag\",\"content\":\"使用技巧\"}],[\"meta\",{\"property\":\"article:tag\",\"content\":\"NAS存储\"}],[\"meta\",{\"property\":\"article:tag\",\"content\":\"GPU服务器\"}],[\"meta\",{\"property\":\"article:published_time\",\"content\":\"2023-09-01T00:00:00.000Z\"}],[\"script\",{\"type\":\"application/ld+json\"},\"{\\\"@context\\\":\\\"https://schema.org\\\",\\\"@type\\\":\\\"Article\\\",\\\"headline\\\":\\\"AList网页\\\",\\\"image\\\":[\\\"http://liandan.cn:8080/\\\"],\\\"datePublished\\\":\\\"2023-09-01T00:00:00.000Z\\\",\\\"dateModified\\\":null,\\\"author\\\":[{\\\"@type\\\":\\\"Person\\\",\\\"name\\\":\\\"fengjk\\\"}]}\"]]},\"headers\":[{\"level\":2,\"title\":\"连接方法\",\"slug\":\"连接方法\",\"link\":\"#连接方法\",\"children\":[]},{\"level\":2,\"title\":\"使用展示\",\"slug\":\"使用展示\",\"link\":\"#使用展示\",\"children\":[]},{\"level\":2,\"title\":\"更多功能可以在功能展示章节看到\",\"slug\":\"更多功能可以在功能展示章节看到\",\"link\":\"#更多功能可以在功能展示章节看到\",\"children\":[]}],\"readingTime\":{\"minutes\":0.86,\"words\":257},\"filePathRelative\":\"Userdocs/nas/alist.md\",\"localizedDate\":\"2023年9月1日\",\"autoDesc\":true}")
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
+}

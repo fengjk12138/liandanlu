@@ -106,7 +106,7 @@ sudo netplan apply
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ul>
 <li>安装软件 网络工具，cifs的smb共享工具，zfs工具，查看磁盘工具，查看网络工具，opencv的依赖库，压缩工具</li>
 </ul>
-<div class="language-text line-numbers-mode" data-ext="text"><pre v-pre class="language-text"><code>sudo apt install net-tools cifs-utils zfsutils-linux iotop sysstat nload libgl1 zip unzip
+<div class="language-bash line-numbers-mode" data-ext="sh"><pre v-pre class="language-bash"><code><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> net-tools cifs-utils zfsutils-linux iotop sysstat nload libgl1 <span class="token function">zip</span> <span class="token function">unzip</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ul>
 <li>关闭<code v-pre>apt</code>自动更新，防止驱动自动更新造成不兼容情况//ToDo List</li>
 </ul>
@@ -121,8 +121,8 @@ sudo netplan apply
 </ul>
 <div class="language-bash line-numbers-mode" data-ext="sh"><pre v-pre class="language-bash"><code><span class="token function">sudo</span> <span class="token function">vim</span> /etc/fstab
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>在文件中加入最后两行，表示nas的开机自动挂载</p>
-<div class="language-yaml line-numbers-mode" data-ext="yml"><pre v-pre class="language-yaml"><code>//10.10.0.2/public /mnt/nas<span class="token punctuation">-</span>public<span class="token punctuation">-</span>linkdata cifs username=<span class="token important">****</span><span class="token punctuation">,</span>password=<span class="token important">****</span><span class="token punctuation">,</span>dir_mode=0777<span class="token punctuation">,</span>file_mode=0777<span class="token punctuation">,</span>noperm 0 0
-//10.10.0.2/resource /mnt/nas<span class="token punctuation">-</span>resource<span class="token punctuation">-</span>linkdata cifs username=<span class="token important">****</span><span class="token punctuation">,</span>password=<span class="token important">****</span><span class="token punctuation">,</span>dir_mode=0777<span class="token punctuation">,</span>file_mode=0777<span class="token punctuation">,</span>noperm 0 0
+<div class="language-yaml line-numbers-mode" data-ext="yml"><pre v-pre class="language-yaml"><code>//10.10.0.2/public /mnt/nas<span class="token punctuation">-</span>public<span class="token punctuation">-</span>linkdata cifs username=<span class="token important">****</span><span class="token punctuation">,</span>password=<span class="token important">****</span><span class="token punctuation">,</span>dir_mode=0777<span class="token punctuation">,</span>file_mode=0777<span class="token punctuation">,</span>noperm<span class="token punctuation">,</span>vers=3.0 0 0
+//10.10.0.2/resource /mnt/nas<span class="token punctuation">-</span>resource<span class="token punctuation">-</span>linkdata cifs username=<span class="token important">****</span><span class="token punctuation">,</span>password=<span class="token important">****</span><span class="token punctuation">,</span>dir_mode=0777<span class="token punctuation">,</span>file_mode=0777<span class="token punctuation">,</span>noperm<span class="token punctuation">,</span>vers=3.0 0 0
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><div class="hint-container note">
 <p class="hint-container-title">注</p>
 <p>第一项表示nas的网络路径，第二项表示挂载点，第三项表示挂载协议为cifs也就是smb协议，</p>

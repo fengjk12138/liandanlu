@@ -2,7 +2,7 @@
 # This is the title of the article
 title: 如何配置新物理机系统
 # This is the icon of the page
-icon: page
+icon: computer
 # This control sidebar order
 order: 1
 # Set author
@@ -11,11 +11,11 @@ author: fengjk
 date: 2023-04-08
 # A page can have multiple categories
 category:
-  - GPU服务器文档
+  - 管理员文档
 # A page can have multiple tags
 tag:
   - 服务器部署
-  - GPU服务器
+  - 宿主机
 # this page is sticky in article list
 sticky: true
 # this page will appear in starred articles
@@ -140,7 +140,7 @@ sudo apt update
 ```
 
 - 安装软件 网络工具，cifs的smb共享工具，zfs工具，查看磁盘工具，查看网络工具，opencv的依赖库，压缩工具
-```
+```bash
 sudo apt install net-tools cifs-utils zfsutils-linux iotop sysstat nload libgl1 zip unzip
 ```
 
@@ -162,8 +162,8 @@ sudo vim /etc/fstab
 在文件中加入最后两行，表示nas的开机自动挂载
 
 ```yaml
-//10.10.0.2/public /mnt/nas-public-linkdata cifs username=****,password=****,dir_mode=0777,file_mode=0777,noperm 0 0
-//10.10.0.2/resource /mnt/nas-resource-linkdata cifs username=****,password=****,dir_mode=0777,file_mode=0777,noperm 0 0
+//10.10.0.2/public /mnt/nas-public-linkdata cifs username=****,password=****,dir_mode=0777,file_mode=0777,noperm,vers=3.0 0 0
+//10.10.0.2/resource /mnt/nas-resource-linkdata cifs username=****,password=****,dir_mode=0777,file_mode=0777,noperm,vers=3.0 0 0
 ```
 
 ::: note

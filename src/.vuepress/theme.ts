@@ -10,7 +10,7 @@ export default hopeTheme({
     url: "https://github.com/fengjk12138",
   },
 
-  iconAssets: "iconfont",
+  iconAssets: "fontawesome",
   
   favicon: "/favicon.jpg", //浏览器标签栏的logo
 
@@ -92,6 +92,7 @@ export default hopeTheme({
       katex: true,
       mark: true,
       mermaid: true,
+      tasklist: true,
       playground: {
         presets: ["ts", "vue"],
       },

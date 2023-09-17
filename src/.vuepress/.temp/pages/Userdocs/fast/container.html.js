@@ -1,0 +1,14 @@
+export const data = JSON.parse("{\"key\":\"v-1856579b\",\"path\":\"/Userdocs/fast/container.html\",\"title\":\"容器分配方式\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"容器分配方式\",\"order\":2,\"author\":\"fengjk\",\"date\":\"2023-08-31T00:00:00.000Z\",\"category\":[\"GPU服务器文档\"],\"tag\":[\"使用技巧\",\"快速开始\",\"GPU服务器\"],\"sticky\":true,\"star\":true,\"footer\":\"Footer content for test\",\"copyright\":\"No Copyright\",\"description\":\"什么是容器 一台机器的资源是有限的，比如CPU、GPU、内存、硬盘等；并且每个人的编程环境不同，权限冲突、版本冲突不断，因此我们需要一种技术来隔离每个人的环境，控制每个人的资源。 容器技术 容器技术一项伟大的发明，可以简单理解为虚拟机，在系统层面隔离每个人的使用环境，并且可以将容器打包、迁移、复制，实现每个人环境可以在不同计算机上的准确复现。详情可以了...\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"http://liandan.cn:8080/Userdocs/fast/container.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"炼丹炉系统\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"容器分配方式\"}],[\"meta\",{\"property\":\"og:description\",\"content\":\"什么是容器 一台机器的资源是有限的，比如CPU、GPU、内存、硬盘等；并且每个人的编程环境不同，权限冲突、版本冲突不断，因此我们需要一种技术来隔离每个人的环境，控制每个人的资源。 容器技术 容器技术一项伟大的发明，可以简单理解为虚拟机，在系统层面隔离每个人的使用环境，并且可以将容器打包、迁移、复制，实现每个人环境可以在不同计算机上的准确复现。详情可以了...\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:image\",\"content\":\"http://liandan.cn:8080/\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}],[\"meta\",{\"name\":\"twitter:card\",\"content\":\"summary_large_image\"}],[\"meta\",{\"name\":\"twitter:image:alt\",\"content\":\"容器分配方式\"}],[\"meta\",{\"property\":\"article:author\",\"content\":\"fengjk\"}],[\"meta\",{\"property\":\"article:tag\",\"content\":\"使用技巧\"}],[\"meta\",{\"property\":\"article:tag\",\"content\":\"快速开始\"}],[\"meta\",{\"property\":\"article:tag\",\"content\":\"GPU服务器\"}],[\"meta\",{\"property\":\"article:published_time\",\"content\":\"2023-08-31T00:00:00.000Z\"}],[\"script\",{\"type\":\"application/ld+json\"},\"{\\\"@context\\\":\\\"https://schema.org\\\",\\\"@type\\\":\\\"Article\\\",\\\"headline\\\":\\\"容器分配方式\\\",\\\"image\\\":[\\\"http://liandan.cn:8080/\\\"],\\\"datePublished\\\":\\\"2023-08-31T00:00:00.000Z\\\",\\\"dateModified\\\":null,\\\"author\\\":[{\\\"@type\\\":\\\"Person\\\",\\\"name\\\":\\\"fengjk\\\"}]}\"]]},\"headers\":[{\"level\":2,\"title\":\"什么是容器\",\"slug\":\"什么是容器\",\"link\":\"#什么是容器\",\"children\":[{\"level\":3,\"title\":\"容器技术的优点\",\"slug\":\"容器技术的优点\",\"link\":\"#容器技术的优点\",\"children\":[]}]},{\"level\":2,\"title\":\"我们服务器上的容器设置\",\"slug\":\"我们服务器上的容器设置\",\"link\":\"#我们服务器上的容器设置\",\"children\":[]}],\"readingTime\":{\"minutes\":3.35,\"words\":1005},\"filePathRelative\":\"Userdocs/fast/container.md\",\"localizedDate\":\"2023年8月31日\",\"autoDesc\":true}")
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
+}

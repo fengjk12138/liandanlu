@@ -12,11 +12,11 @@
 <li>[建议]</li>
 </ul>
 <h3 id="_3-加速你的计算、减少程序瓶颈" tabindex="-1"><a class="header-anchor" href="#_3-加速你的计算、减少程序瓶颈" aria-hidden="true">#</a> <RouterLink to="/GPUdocs/user/acc.html">3. 加速你的计算、减少程序瓶颈</RouterLink></h3>
-<h2 id="二、-服务器容器配置" tabindex="-1"><a class="header-anchor" href="#二、-服务器容器配置" aria-hidden="true">#</a> 二、 服务器容器配置</h2>
+<h2 id="二、-服务器容器配置-管理员阅读" tabindex="-1"><a class="header-anchor" href="#二、-服务器容器配置-管理员阅读" aria-hidden="true">#</a> 二、 服务器容器配置 (管理员阅读)</h2>
 <h3 id="_1-物理机环境配置" tabindex="-1"><a class="header-anchor" href="#_1-物理机环境配置" aria-hidden="true">#</a> <RouterLink to="/GPUdocs/deploy/host.html">1. 物理机环境配置</RouterLink></h3>
 <h3 id="_2-创建新用户容器" tabindex="-1"><a class="header-anchor" href="#_2-创建新用户容器" aria-hidden="true">#</a> <RouterLink to="/GPUdocs/deploy/newuser.html">2. 创建新用户容器</RouterLink></h3>
 <h3 id="_3-模板容器环境搭建、容器迁移" tabindex="-1"><a class="header-anchor" href="#_3-模板容器环境搭建、容器迁移" aria-hidden="true">#</a> <RouterLink to="/GPUdocs/deploy/container.html">3. 模板容器环境搭建、容器迁移</RouterLink></h3>
-<h2 id="三、-服务器物理机配置" tabindex="-1"><a class="header-anchor" href="#三、-服务器物理机配置" aria-hidden="true">#</a> 三、 服务器物理机配置</h2>
+<h2 id="三、-服务器物理机配置-管理员阅读" tabindex="-1"><a class="header-anchor" href="#三、-服务器物理机配置-管理员阅读" aria-hidden="true">#</a> 三、 服务器物理机配置 (管理员阅读)</h2>
 <h3 id="_1-gpu服务器硬件配置" tabindex="-1"><a class="header-anchor" href="#_1-gpu服务器硬件配置" aria-hidden="true">#</a> [1. GPU服务器硬件配置]</h3>
 <h3 id="_2-gpu服务器部署文档" tabindex="-1"><a class="header-anchor" href="#_2-gpu服务器部署文档" aria-hidden="true">#</a> [2. GPU服务器部署文档]</h3>
 <h2 id="三、-nas文档包含以下内容" tabindex="-1"><a class="header-anchor" href="#三、-nas文档包含以下内容" aria-hidden="true">#</a> 三、 NAS文档包含以下内容</h2>

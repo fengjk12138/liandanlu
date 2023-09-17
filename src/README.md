@@ -7,42 +7,42 @@ heroText: 炼丹炉
 tagline: 一个先进的多机多GPU管理方案
 actions:
   - text: 快速开始💡
-    link: /GPUdocs/user/fast
+    link: /Userdocs/fast/login
     type: primary
 
   - text: 未来计划
     link: /overview/
   
-  - text: 详细文档
+  - text: 详细文档🐠
     link: /GPUdocs/
   
   
 
 features:
   - title: 容器管理
-    icon: config
+    icon: /assets/icon/容器.svg
     details: 以Linux容器为基础，管理各个用户空间，实现环境隔离与资源控制
-    link: https://theme-hope.vuejs.press/guide/advanced/seo.html
+    link: /Userdocs/fast/container.md
 
   - title: NAS同步
-    icon: mobile
+    icon: /assets/icon/NAS设备.svg
     details: 建立万兆核心NAS，每台机器与NAS互联，实现全局数据共享与超大存储空间
     link: /NASdocs/
 
   - title: 高密集群
-    icon: layout
+    icon: /assets/icon/服务器.svg
     details: 使用可支持8卡的GPU准系统组建每一台服务器，提高服务器的计算密度，减少机房空间浪费
     link: https://theme-hope.vuejs.press/guide/layout/
 
   - title: 便宜实惠
-    icon: support
-    details: 以自建服务器准系统为基础，搭建所有的服务集群，价格压缩到最低，同时也不逊色任何高贵的成品方案，把钱花在刀刃上。
+    icon: /assets/icon/人民币.svg
+    details: 以自建服务器准系统为基础，搭建所有的服务集群，价格压缩到最低，同时性能上也不逊色于高贵的成品方案，把钱花在刀刃上。
     link: https://theme-hope.vuejs.press/guide/interface/accessibility.html
 
   - title: 在做了在做了
-    icon: more
+    icon: /assets/icon/更多.svg
     details: 别问，问就是bug在修，新功能会出，文档开始写了
-    link: https://theme-hope.vuejs.press/guide/feature/
+    link: /overview/
 
   # - title: Markdown Enhance
   #   icon: markdown
