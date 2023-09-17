@@ -13,7 +13,7 @@ actions:
   - text: 未来计划
     link: /overview/
   
-  - text: 详细文档🐠
+  - text: 管理员文档🐠
     link: /GPUdocs/
   
   
@@ -27,17 +27,17 @@ features:
   - title: NAS同步
     icon: /assets/icon/NAS设备.svg
     details: 建立万兆核心NAS，每台机器与NAS互联，实现全局数据共享与超大存储空间
-    link: /NASdocs/
+    link: /Userdocs/nas/whatis.md
 
   - title: 高密集群
     icon: /assets/icon/服务器.svg
     details: 使用可支持8卡的GPU准系统组建每一台服务器，提高服务器的计算密度，减少机房空间浪费
-    link: https://theme-hope.vuejs.press/guide/layout/
+    link: /overview/README.md
 
   - title: 便宜实惠
     icon: /assets/icon/人民币.svg
     details: 以自建服务器准系统为基础，搭建所有的服务集群，价格压缩到最低，同时性能上也不逊色于高贵的成品方案，把钱花在刀刃上。
-    link: https://theme-hope.vuejs.press/guide/interface/accessibility.html
+    link: /overview/gpu.md
 
   - title: 在做了在做了
     icon: /assets/icon/更多.svg

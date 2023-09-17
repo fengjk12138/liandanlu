@@ -56,7 +56,7 @@
 <p>较新型号的GPU需要使用高版本<code v-pre>pytorch</code>，注意代码兼容性问题；</p>
 </li>
 <li>
-<p>20系列以后的GPU使用混合精度运算，可以获得很好的加速；</p>
+<p>20系列以后的GPU使用<a href="https://zhuanlan.zhihu.com/p/408610877" target="_blank" rel="noopener noreferrer">混合精度运算<ExternalLinkIcon/></a>，可以获得很好的加速；</p>
 </li>
 <li>
 <p>将数据集、日志等存放入NAS，不要在本地磁盘存放过多数据，本地磁盘空间有限、安全性低；</p>
