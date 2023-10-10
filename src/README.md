@@ -10,6 +10,10 @@ actions:
     link: /Userdocs/fast/login
     type: primary
 
+  - text: AList网页🔑
+    link: linkdata.liandanlu.cn:40000
+    type: secondary
+  
   - text: 未来计划
     link: /overview/
   

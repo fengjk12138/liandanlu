@@ -46,25 +46,25 @@
 <div class="hint-container info">
 <p class="hint-container-title">用户配置文件修改部分</p>
 <p>相当于在用户<code v-pre>config</code>的<code v-pre>device</code>下增加如下部分：</p>
-<div class="language-yaml line-numbers-mode" data-ext="yml"><pre v-pre class="language-yaml"><code><span class="token key atrule">eth0</span><span class="token punctuation">:</span>
-  <span class="token key atrule">ipv4.address</span><span class="token punctuation">:</span> 172.16.x.1
-  <span class="token key atrule">name</span><span class="token punctuation">:</span> eth0
-  <span class="token key atrule">network</span><span class="token punctuation">:</span> lxdbr0
-  <span class="token key atrule">type</span><span class="token punctuation">:</span> nic
-<span class="token key atrule">gpu1</span><span class="token punctuation">:</span>
-  <span class="token key atrule">id</span><span class="token punctuation">:</span> <span class="token string">"1"</span>
-  <span class="token key atrule">type</span><span class="token punctuation">:</span> gpu
-<span class="token key atrule">gpu2</span><span class="token punctuation">:</span>
-  <span class="token key atrule">id</span><span class="token punctuation">:</span> <span class="token string">"2"</span>
-  <span class="token key atrule">type</span><span class="token punctuation">:</span> gpu
-<span class="token key atrule">nas-public-tju</span><span class="token punctuation">:</span>
-  <span class="token key atrule">path</span><span class="token punctuation">:</span> /root/nas<span class="token punctuation">-</span>public<span class="token punctuation">-</span>linkdata
-  <span class="token key atrule">source</span><span class="token punctuation">:</span> /mnt/nas<span class="token punctuation">-</span>public<span class="token punctuation">-</span>linkdata/huanghansheng
-  <span class="token key atrule">type</span><span class="token punctuation">:</span> disk
-<span class="token key atrule">proxy-ssh</span><span class="token punctuation">:</span>
-  <span class="token key atrule">connect</span><span class="token punctuation">:</span> tcp<span class="token punctuation">:</span>127.0.0.1<span class="token punctuation">:</span><span class="token number">22</span><span class="token punctuation">,</span>40xy1<span class="token punctuation">-</span>40xy9
-  <span class="token key atrule">listen</span><span class="token punctuation">:</span> tcp<span class="token punctuation">:</span>0.0.0.0<span class="token punctuation">:</span>40xy0<span class="token punctuation">-</span>40xy9
-  <span class="token key atrule">type</span><span class="token punctuation">:</span> proxy
+<div class="language-yaml line-numbers-mode" data-ext="yml"><pre v-pre class="language-yaml"><code>  <span class="token key atrule">eth0</span><span class="token punctuation">:</span>
+    <span class="token key atrule">ipv4.address</span><span class="token punctuation">:</span> 172.16.x.1
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> eth0
+    <span class="token key atrule">network</span><span class="token punctuation">:</span> lxdbr0
+    <span class="token key atrule">type</span><span class="token punctuation">:</span> nic
+  <span class="token key atrule">gpu1</span><span class="token punctuation">:</span>
+    <span class="token key atrule">id</span><span class="token punctuation">:</span> <span class="token string">"1"</span>
+    <span class="token key atrule">type</span><span class="token punctuation">:</span> gpu
+  <span class="token key atrule">gpu2</span><span class="token punctuation">:</span>
+    <span class="token key atrule">id</span><span class="token punctuation">:</span> <span class="token string">"2"</span>
+    <span class="token key atrule">type</span><span class="token punctuation">:</span> gpu
+  <span class="token key atrule">nas-public-tju</span><span class="token punctuation">:</span>
+    <span class="token key atrule">path</span><span class="token punctuation">:</span> /root/nas<span class="token punctuation">-</span>public<span class="token punctuation">-</span>linkdata
+    <span class="token key atrule">source</span><span class="token punctuation">:</span> /mnt/nas<span class="token punctuation">-</span>public<span class="token punctuation">-</span>linkdata/huanghansheng
+    <span class="token key atrule">type</span><span class="token punctuation">:</span> disk
+  <span class="token key atrule">proxy-ssh</span><span class="token punctuation">:</span>
+    <span class="token key atrule">connect</span><span class="token punctuation">:</span> tcp<span class="token punctuation">:</span>127.0.0.1<span class="token punctuation">:</span><span class="token number">22</span><span class="token punctuation">,</span>40xy1<span class="token punctuation">-</span>40xy9
+    <span class="token key atrule">listen</span><span class="token punctuation">:</span> tcp<span class="token punctuation">:</span>0.0.0.0<span class="token punctuation">:</span>40xy0<span class="token punctuation">-</span>40xy9
+    <span class="token key atrule">type</span><span class="token punctuation">:</span> proxy
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div>
 <div class="hint-container tip">
 <p class="hint-container-title">提示</p>

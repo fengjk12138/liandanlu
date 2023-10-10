@@ -78,25 +78,25 @@ lxc exec mars-huanghansheng -- passwd root
 相当于在用户`config`的`device`下增加如下部分：
 
 ```yaml
-eth0:
-  ipv4.address: 172.16.x.1
-  name: eth0
-  network: lxdbr0
-  type: nic
-gpu1:
-  id: "1"
-  type: gpu
-gpu2:
-  id: "2"
-  type: gpu
-nas-public-tju:
-  path: /root/nas-public-linkdata
-  source: /mnt/nas-public-linkdata/huanghansheng
-  type: disk
-proxy-ssh:
-  connect: tcp:127.0.0.1:22,40xy1-40xy9
-  listen: tcp:0.0.0.0:40xy0-40xy9
-  type: proxy
+  eth0:
+    ipv4.address: 172.16.x.1
+    name: eth0
+    network: lxdbr0
+    type: nic
+  gpu1:
+    id: "1"
+    type: gpu
+  gpu2:
+    id: "2"
+    type: gpu
+  nas-public-tju:
+    path: /root/nas-public-linkdata
+    source: /mnt/nas-public-linkdata/huanghansheng
+    type: disk
+  proxy-ssh:
+    connect: tcp:127.0.0.1:22,40xy1-40xy9
+    listen: tcp:0.0.0.0:40xy0-40xy9
+    type: proxy
 ```
 
 
