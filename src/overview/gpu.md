@@ -201,16 +201,16 @@ api-server
 
 **网段**：192.168.2.1
 
-@tab Gamma (waiting)
+@tab Gamma
 **显卡**：NVIDIA RTX 2080ti 22G * 8
 
 **CPU**：Intel Xeon E5-2673v4 * 2 共 40核80线程
 
-**内存**：256G
+**内存**：240G (32G * 7 + 16G * 1)
 
 **硬盘**：1T sata系统盘, 4T SATA固态容器盘
 
-**网段**：
+**网段**：192.168.3.1
 
 **个人容器限制**：未限制
 <!-- @tab Africa (no-budget)

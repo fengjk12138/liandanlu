@@ -91,7 +91,7 @@
 </template>
 </Tabs>
 <h3 id="tju位置服务器" tabindex="-1"><a class="header-anchor" href="#tju位置服务器" aria-hidden="true">#</a> tju位置服务器</h3>
-<Tabs id="249" :data='[{"title":"存储"},{"title":"Alpha"},{"title":"Beta"},{"title":"Gamma (waiting)"},{"title":"stark"}]' tab-id="tju">
+<Tabs id="249" :data='[{"title":"存储"},{"title":"Alpha"},{"title":"Beta"},{"title":"Gamma"},{"title":"stark"}]' tab-id="tju">
 <template #tab0="{ title, value, isActive }">
 <p><strong>服务器</strong>：浪潮SA5212M4</p>
 <p><strong>CPU</strong>：</p>
@@ -120,9 +120,9 @@
 <template #tab3="{ title, value, isActive }">
 <p><strong>显卡</strong>：NVIDIA RTX 2080ti 22G * 8</p>
 <p><strong>CPU</strong>：Intel Xeon E5-2673v4 * 2 共 40核80线程</p>
-<p><strong>内存</strong>：256G</p>
+<p><strong>内存</strong>：240G (32G * 7 + 16G * 1)</p>
 <p><strong>硬盘</strong>：1T sata系统盘, 4T SATA固态容器盘</p>
-<p><strong>网段</strong>：</p>
+<p><strong>网段</strong>：192.168.3.1</p>
 <p><strong>个人容器限制</strong>：未限制</p>
 <!-- @tab Africa (no-budget)
 **显卡**：NVIDIA RTX 3080 20G * 8
