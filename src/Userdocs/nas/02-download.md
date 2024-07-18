@@ -34,7 +34,7 @@ copyright: No Copyright
 通过**向日葵**直接连接Windows服务器即可。
 :::
 
->向日葵电脑的连接帐密，请查看[AList网页](./alist.md)
+>向日葵电脑的连接帐密，请查看[AList网页](./03-alist.md)
 
 Windows下载机中包含**百度云SVIP、梯子、迅雷**等工具，可以24h挂下载程序，下载完成之后拖入nas中即可（拖入nas后，记得删除Windows下载机上的文件，不要占用下载机空间）。
 

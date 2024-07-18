@@ -89,7 +89,7 @@ lxc exec mars-huanghansheng -- passwd root
   gpu2:
     id: "2"
     type: gpu
-  nas-public-tju:
+  nas-public:
     path: /root/nas-public-linkdata
     source: /mnt/nas-public-linkdata/huanghansheng
     type: disk
@@ -103,7 +103,7 @@ lxc exec mars-huanghansheng -- passwd root
 :::
 
 :::tip
-GPU分配原则可以见[其他文档](/Userdocs/fast/container.html)。
+GPU分配原则可以见[其他文档](/Userdocs/fast/01-container.html)。
 :::
 ### 3. 给容器加入`CPU`,`内存`限制
 根据机器的特性选择是否需要限制容器的CPU、内存：

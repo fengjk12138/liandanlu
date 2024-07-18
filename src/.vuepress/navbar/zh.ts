@@ -10,7 +10,7 @@ export const zhNavbar = navbar([
   {
     text: "服务器使用",
     icon: "computer",
-    link: "/Userdocs/fast/login.md#注意事项"
+    link: "/Userdocs/fast/00-login.md#注意事项"
   },
   {
     text: "管理员",

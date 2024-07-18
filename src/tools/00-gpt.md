@@ -39,15 +39,15 @@ copyright: No Copyright
 ②如果需要大量使用工具（如使用ChatGPT生成大规模数据集），需要提前做好成本预算([成本计算网站](https://openai.com/pricing))，然后与管理员和老师联系，获取批准。
 :::
 
-## 使用方法
+## **使用方法**
 
 实验室目前准备了3个平台：①学术版GPT，②ChatNextWeb，③官网登录
 
-网址、帐密等内容在Alist网页中查看，访问方式详见[Alist使用方式](/Userdocs/nas/alist.md)
+网址、帐密等内容在Alist网页中查看，访问方式详见[Alist使用方式](/Userdocs/nas/03-alist.md)
 
 对于无法翻墙的同学，建议使用前两种方式。第三种方式需要登录OpenAI官网。
 
-### ①学术GPT登录
+### **①学术GPT登录** (2024-07-17暂时失效)
 
 - 在网页内输入**学术GPT**网址，可以看见如下界面，输入帐密登录：
 
@@ -73,7 +73,7 @@ copyright: No Copyright
 
 
 
-### ②Chat-Next-Web使用
+### **②Chat-Next-Web使用**
 
 - 进入Chat-Next-Web网址，选择“登录”，然后输入密码
 <figure>
@@ -99,7 +99,7 @@ copyright: No Copyright
 </figure>
 
 
-### ③官网登录
+### **③官网登录**
 - 进入[OpenAI官网](https://chat.openai.com/)，输入帐密登录
 
 <figure>

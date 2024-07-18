@@ -7,7 +7,7 @@ heroText: 炼丹炉
 tagline: 一个先进的多机多GPU管理方案
 actions:
   - text: 快速开始💡
-    link: /Userdocs/fast/login
+    link: "/Userdocs/fast/00-login"
     type: primary
 
   - text: AList网页🔑
@@ -26,12 +26,12 @@ features:
   - title: 容器管理
     icon: /assets/icon/容器.svg
     details: 以Linux容器为基础，管理各个用户空间，实现环境隔离与资源控制
-    link: /Userdocs/fast/container.md
+    link: /Userdocs/fast/01-container.md
 
   - title: NAS同步
     icon: /assets/icon/NAS设备.svg
     details: 建立万兆核心NAS，每台机器与NAS互联，实现全局数据共享与超大存储空间
-    link: /Userdocs/nas/whatis.md
+    link: /Userdocs/nas/00-whatis.md
 
   - title: 高密集群
     icon: /assets/icon/服务器.svg

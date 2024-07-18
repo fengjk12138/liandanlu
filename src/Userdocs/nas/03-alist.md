@@ -2,7 +2,7 @@
 # This is the title of the article
 title: AList网页
 # This is the icon of the page
-icon: wifi
+icon: cloud-download-alt
 # This control sidebar order
 order: 1
 # Set author

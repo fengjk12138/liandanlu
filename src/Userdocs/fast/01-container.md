@@ -2,7 +2,7 @@
 # This is the title of the article
 title: 容器分配方式
 # This is the icon of the page
-# icon: more
+icon: box-open
 # This control sidebar order
 order: 2
 # Set author

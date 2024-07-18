@@ -61,7 +61,7 @@ copyright: No Copyright
 :::
 
 :::tip 外网加速
-由于下载国外资源缓慢，甚至断连，详情外网加速可以查看[网络章节](./network.md)，这里只介绍conda的加速方式。
+由于下载国外资源缓慢，甚至断连，详情外网加速可以查看[网络章节](./03-network.md)，这里只介绍conda的加速方式。
 :::
 
 - 导入`$HTTPS_PROXY`环境变量，使用翻墙/代理来加速conda
@@ -143,5 +143,5 @@ copyright: No Copyright
 ------
 
 :::tip
-可以看到，确实较麻烦。可以看看[网络篇](./network.md)的内容。
+可以看到，确实较麻烦。可以看看[网络篇](./03-network.md)的内容。
 :::

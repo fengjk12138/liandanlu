@@ -22,16 +22,20 @@ export const zhSidebar = sidebar({
       text:"服务器使用",
       icon: "lightbulb",
       prefix: "Userdocs/",
-      link: "/Userdocs/fast/login",
+      link: "/Userdocs/fast/00-login",
       // collapsible: true,
       children: [
         {
           text:'快速开始',
           icon: "rocket",
           prefix: 'fast',
-          link: "/Userdocs/fast/login",
+          link: "/Userdocs/fast/00-login",
           collapsible: true,
-          children:["login.md", "container.md", "environment.md","network.md", 'faq.md']
+          children:["00-login.md", 
+                    "01-container.md", 
+                    "02-environment.md",
+                    "03-network.md", 
+                    "04-faq.md"]
         },
         // {
         //   text: '管理员文档',
@@ -45,9 +49,9 @@ export const zhSidebar = sidebar({
           text:'存储NAS使用',
           icon: "database",
           prefix: 'nas',
-          link: "/Userdocs/nas/whatis",
+          link: "/Userdocs/nas/00-whatis",
           collapsible: true,
-          children:["whatis.md", "mount.md", "download.md", "alist.md", "show.md"]
+          children:["00-whatis.md", "01-mount.md", "02-download.md", "03-alist.md", "04-show.md"]
         }
       ]
 
@@ -56,9 +60,22 @@ export const zhSidebar = sidebar({
       text:"实验小工具",
       icon: "wrench",
       prefix: "tools/",
-      link: "/tools/gpt",
+      link: "/tools/00-gpt",
       // collapsible: true,
-      children: ["gpt.md"]
+      children: ["00-gpt.md", "01-sslvpn.md"]
+    },
+    {
+      text:"环境配置TIPS",
+      icon: "screwdriver",
+      prefix: "env_config/",
+      link: "/env_config/00-cuda.md",
+      // collapsible: true,
+      children: ["00-cuda.md"]
     }
   ],
+
+
+
+
+
 });

@@ -2,7 +2,7 @@
 # This is the title of the article
 title: NAS的使用
 # This is the icon of the page
-# icon: page
+icon: book
 # This control sidebar order
 order: 1
 # Set author
@@ -59,11 +59,16 @@ nas里有两个目录：`public`，`resource`。
 
 展示格式为：`nas的目录` $\xrightarrow{对应}$ `容器内的目录`：
 
+---
+
+
 `public/人名`$\xrightarrow{对应}$ `/root/nas-public-位置` 
 
 `public`$\xrightarrow{对应}$ `/mnt/nas-public-位置` 
 
 `resource`$\xrightarrow{对应}$ `/root/nas-resource-位置`
+
+---
 
 >容器中，目录的命名方式为：`nas-文件类型-服务器位置`，服务器位置目前有`linkdata`和`tju`。比如`nas-public-linkdata`为链数`public`目录。
 
@@ -88,7 +93,7 @@ nas里有两个目录：`public`，`resource`。
 ## **网页端**
 nas可以通过浏览器直接访问，可以查看、下载、上传文件。
 
-可以详细查看[AList章节](./alist.md)来获取详情。
+可以详细查看[AList章节](./03-alist.md)来获取详情。
 
 
 ---
@@ -101,7 +106,12 @@ Windows可以通过网络协议挂载nas，我们使用的协议是**WebDAV**。
 
 配制WebDAV时请参考图片中填写的内容。
 
-地址：http://linkdata.liandanlu.cn:40000/dav
+①地址：http://linkdata.liandanlu.cn:40000/dav
+
+②填写帐密
+
+③取消https
+
 **这是在Raidriver中填写的地址，不是在网之内输入的地址。**
 
 **用户名和密码请登录alist网页端查看。**
@@ -119,5 +129,9 @@ webdav协议
 ---
 ## **ubuntu端**
 webdav协议
+
+---
+
+## 可以自行选择挂载webdav的软件
 
 ![各种系统可以挂载webdav的软件](./img/webdav.png)
