@@ -66,6 +66,7 @@ copyright: No Copyright
 ## 2. 服务器详情
 
 从侧边栏进入你所在的服务器。服务器详情页面主要分为下面几个方面：
+
     <figure>
     <img src="./img/schedule/server-details.png" alt="服务器详情" width="300">
     <figcaption>服务器详情</figcaption>

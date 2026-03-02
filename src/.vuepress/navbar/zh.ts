@@ -5,7 +5,7 @@ export const zhNavbar = navbar([
   {
     text: "Overview",
     icon: "globe",
-    link: "/overview"
+    link: "/overview/"
   },
   {
     text: "服务器使用",

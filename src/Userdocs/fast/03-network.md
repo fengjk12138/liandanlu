@@ -57,7 +57,7 @@ copyright: No Copyright
 
 ![代理上网的原理，请求链接的转发过程](./img/proxy-show.jpg)
 
-**代理服务器**：`proxy.xxx.liandanlu.cn`地址所对应的电脑在校内A417房间或者链数的Windows下载机。
+**代理服务器**：`proxy.xxx.liandanlu.cn`地址所对应的电脑在校内实验室或者校外机房。
 :::
 
 <!-- ## 代理上网
@@ -105,9 +105,9 @@ export HTTP_PROXY=http://proxy.linkdata.liandanlu.cn:10809
 - 在`~/.bashrc`文件中增加以下内容：
   ```bash
   function set_proxy(){
-      export HTTP_PROXY=http://proxy.linkdata.liandanlu.cn:10809
+      export HTTP_PROXY=http://vm-windows-1.liandanlu.cn:10808
       export HTTPS_PROXY=$HTTP_PROXY
-      export ALL_PROXY=socks5://proxy.linkdata.liandanlu.cn:10808
+      export ALL_PROXY=socks5://vm-windows-1.liandanlu.cn:10808
       export http_proxy=$HTTP_PROXY
       export https_proxy=$HTTP_PROXY
       export all_proxy=$ALL_PROXY

@@ -1,8 +1,25 @@
 import { defineUserConfig } from "vuepress";
+import { viteBundler } from "@vuepress/bundler-vite";
+import { revealJsPlugin } from "@vuepress/plugin-revealjs";
 import theme from "./theme.js";
 
 export default defineUserConfig({
   base: "/",
+
+  bundler: viteBundler({
+    viteOptions: {
+      server: {
+        allowedHosts: ["docs.heartbreaker.icu"],
+        fs: {
+          allow: [process.cwd(), "/www/liandanlu"],
+        },
+      },
+    },
+  }),
+
+  plugins: [
+    revealJsPlugin({ layout: "Slide" }),
+  ],
 
   locales: {
     "/": {
