@@ -75,9 +75,9 @@ sh cuda_12.5.1_555.42.06_linux.run
 - 配置环境变量，使用命令在`~/.bashrc`中增加环境变量设置。
 
 ```bash
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64
 export PATH=$PATH:/usr/local/cuda/bin
-export CUDA_HOME=$CUDA_HOME:/usr/local/cuda
+export CUDA_HOME=/usr/local/cuda
 ```
 
 - 然后重开一个命令行，使用下面命令检查是否安装成功，如果有正常输出，那就安装成了。
@@ -100,6 +100,29 @@ nvcc -V
 ```
 
 
+## **CUDNN安装**
+
+只有你需要cudnn加速库时在安装，pytorch自带加速库基本够用。如果你需要使用onnx，tensorRT等，按照以下方式安装cudnn库。
+
+- 在[英伟达官方](https://developer.nvidia.com/rdp/cudnn-archive)寻找自己`cuda`版本对应的cudnn库，然后下载对应的`tar`包。或者在`nas-resource\常用软件`寻找已经下载好的包。
+
+<figure>
+<img src="./img/cudnn-download.png" alt="cudnn下载" height="400">
+<figcaption>cudnn下载，下载`tar`包</figcaption>
+</figure>
+
+- 把`tar`包上传到你的服务器上，然后解压
+```bash
+tar -xvf cudnn-linux-x86_64-8.9.7.29_cuda11-archive.tar.xz 
+```
+
+- 将`cudnn`加速库的文件，复制到`cuda`路径中
+```bash
+cd cudnn-linux-x86_64-8.9.7.29_cuda11-archive.tar.xz 
+sudo cp lib/* /usr/local/cuda/lib64/
+sudo cp include/* /usr/local/cuda/include/
+```
+
 ## **清除英伟达驱动**
 
 :::danger 仅限于驱动损坏时使用
@@ -112,5 +135,7 @@ nvcc -V
 - 使用如下命令清除显卡驱动：
 ```bash
 apt-get purge nvidia-*
+apt-get --purge remove "*nvidia*"
 apt autoremove
+sudo /usr/bin/nvidia-uninstall
 ```

@@ -57,18 +57,13 @@ nas里有两个目录：`public`，`resource`。
 ## ==容器端（必读、重点）==
 在容器内，管理员已经为你挂载好了nas。
 
-展示格式为：`nas的目录` $\xrightarrow{对应}$ `容器内的目录`：
+nas内的目录与容器内的目录对应关系如下：
 
----
-
-
-`public/人名`$\xrightarrow{对应}$ `/root/nas-public-位置` 
-
-`public`$\xrightarrow{对应}$ `/mnt/nas-public-位置` 
-
-`resource`$\xrightarrow{对应}$ `/root/nas-resource-位置`
-
----
+| nas的目录   | 容器内的目录          |
+|-------------|-----------------------|
+| `public/人名` | `/root/nas-public-位置` |
+| `public`     | `/mnt/nas-public-位置` |
+| `resource`   | `/root/nas-resource-位置` |
 
 >容器中，目录的命名方式为：`nas-文件类型-服务器位置`，服务器位置目前有`linkdata`和`tju`。比如`nas-public-linkdata`为链数`public`目录。
 
@@ -97,6 +92,8 @@ nas可以通过浏览器直接访问，可以查看、下载、上传文件。
 
 
 ---
+**使用客户端挂载之后就可以像使用本地文件夹一样使用nas。**
+
 ## **Windows端**
 Windows可以通过网络协议挂载nas，我们使用的协议是**WebDAV**。
 下载[RaiDriver软件](https://www.raidrive.com/)，挂载nas到本地。
@@ -104,15 +101,15 @@ Windows可以通过网络协议挂载nas，我们使用的协议是**WebDAV**。
 
 ![RaiDriver中的配置](./img/raidriver.png){height=400}
 
-配制WebDAV时请参考图片中填写的内容。
+配制WebDAV时请**参考图片**中填写的内容:
 
-①地址：http://linkdata.liandanlu.cn:40000/dav
+①地址：http://linkdata.liandanlu.cn 端口: 40000   路径：/dav
 
-②填写帐密
+②填写用户名和密码
 
-③取消https
+==③取消https==
 
-**这是在Raidriver中填写的地址，不是在网之内输入的地址。**
+**这是在Raidriver中填写的地址，不是在网页网址内输入的地址。**
 
 **用户名和密码请登录alist网页端查看。**
 

@@ -14,6 +14,10 @@ actions:
     link: http://linkdata.liandanlu.cn:40000
     type: secondary
   
+  - text: 容器调度🍡
+    link: "/tools/02-schedule"
+    type: primary
+
   - text: 未来计划
     link: /overview/
   
